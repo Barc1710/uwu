@@ -1,17 +1,11 @@
 /* ========================================
-   MÓDULO DE VENTAS - PUNTO DE VENTA
+    MÓDULO DE VENTAS - PUNTO DE VENTA
    ======================================== */
 
 /* ========================================
-   LAYOUT PRINCIPAL
+    LAYOUT PRINCIPAL
    ======================================== */
 
-.title {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    align-self: stretch;
-}
 
 .content {
     display: flex;
@@ -30,7 +24,7 @@
 }
 
 /* ========================================
-   CONTENEDORES PRINCIPALES
+    CONTENEDORES PRINCIPALES
    ======================================== */
 
 .comprobant,
@@ -53,7 +47,7 @@
 }
 
 /* ========================================
-   TÍTULOS GLOBALES
+    TÍTULOS GLOBALES
    ======================================== */
 
 h2 {
@@ -79,7 +73,7 @@ align-self: stretch;
 }
 
 /* ========================================
-   SECCIÓN COMPROBANTE
+    SECCIÓN COMPROBANTE
    ======================================== */
 
 .comprobant-info {
@@ -130,7 +124,7 @@ align-self: stretch;
 }
 
 /* ========================================
-   FORMULARIOS Y INPUTS
+    FORMULARIOS Y INPUTS
    ======================================== */
 
 .comprobant-info select,
@@ -181,7 +175,7 @@ align-self: stretch;
 }
 
 /* ========================================
-   BOTONES PRINCIPALES
+    BOTONES PRINCIPALES
    ======================================== */
 
 .btn-agregar-cliente,
@@ -209,7 +203,7 @@ align-self: stretch;
 }
 
 .btn-agregar-cliente:hover {
-    background: #0056CC;
+    background: var(--azul-hover);
 }
 
 .btn-agregar-cliente i {
@@ -223,7 +217,7 @@ align-self: stretch;
 }
 
 .buscar-limpiar button:hover {
-    background: #0056CC;
+    background: var(--azul-hover)
 }
 
 /* Botón Limpiar */
@@ -244,7 +238,7 @@ align-self: stretch;
 }
 
 /* ========================================
-   SECCIÓN PRODUCTOS
+    SECCIÓN PRODUCTOS
    ======================================== */
 
 .buscar-limpiar {
@@ -278,7 +272,7 @@ align-self: stretch;
 }
 
 /* ========================================
-   TABLA DE PRODUCTOS
+    TABLA DE PRODUCTOS
    ======================================== */
 
 .table-products {
@@ -302,15 +296,15 @@ align-self: stretch;
     padding: 15px 12px;
     text-align: left;
     font-weight: 600;
-    color: var(--Neutral-800, #1C1C1E);
+    color: var(--neutral-800, #1C1C1E);
     font-size: 13px;
-    text-transform: uppercase;
+    text-transform: none;
     letter-spacing: 0.5px;
 }
 
 .table-products td {
     padding: 12px;
-    color: var(--Neutral-700, #48484A);
+    color: var(--neutral-700, #48484A);
     vertical-align: middle;
 }
 
@@ -359,11 +353,17 @@ align-self: stretch;
     width: 120px; 
     text-align: right; 
     font-weight: 600; 
-    color: var(--Neutral-800, #1C1C1E); 
+    color: var(--neutral-800, #1C1C1E); 
 }
 
 .table-products th:nth-child(7),
-.table-products td:nth-child(7) { width: 100px; text-align: center; }
+.table-products td:nth-child(7) { width: 120px; text-align: center; }
+
+.table-products tr{
+    border-bottom: 1px solid var(--neutral-400);
+}
+
+
 
 /* Botones de acciones en tabla */
 .btn-accion {
@@ -376,12 +376,12 @@ align-self: stretch;
     transition: all 0.2s ease;
     font-size: 14px;
     background: var(--color-blanco);
-    color: var(--Neutral-800, #1C1C1E);
+    color: var(--neutral-800, #1C1C1E);
 }
 
 .btn-ver,
 .btn-eliminar {
-    color: var(--Neutral-800, #1C1C1E);
+    color: var(--eutral-800, #1C1C1E);
     border: none;
 }
 
@@ -397,7 +397,7 @@ align-self: stretch;
 }
 
 /* ========================================
-   SECCIÓN PAGO
+    SECCIÓN PAGO
    ======================================== */
 
 .metodo-pago,
