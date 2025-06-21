@@ -43,32 +43,18 @@
     --font-family: 'Inter', sans-serif;
     
     /* Tamaños de fuente */
-    --font-metrica: 53.32px; /* 40pt */
-    --font-titulo: 42.66px; /* 32pt */
-    --font-titulo-mediano: 32px; /* 24pt */
-    --font-subtitulo: 26.66px; /* 20pt */
-    --font-texto: 20px; /* 15pt */
-    --font-boton: 21.33px; /* 16pt */
+    --font-metrica: 40px; /* 40pt */
+    --font-titulo: 32px; /* 32pt */
+    --font-titulo-mediano: 24px; /* 24pt */
+    --font-subtitulo: 20px; /* 20pt */
+    --font-texto: 15px; /* 15pt */
+    --font-boton: 16px; /* 16pt */
     --font-navegacion-b: 15px; /* 15pt */
-    --font-navegacion: 16px; /* 15pt */
-    --font-boton-s: 18.66px; /* 14pt */
-    --font-etiqueta-b: 18.66px; /* 14pt */
+    --font-navegacion: 15px; /* 15pt */
+    --font-boton-s: 14px; /* 14pt */
+    --font-etiqueta-b: 14px; /* 14pt */
     --font-etiqueta: 14px; /* 14pt */
     --font-metadato: 12px, ; /* 12pt */
-
-    /* Tamaños en rem */
-    --font-metrica-rem: 3.333rem;
-    --font-titulo-rem: 2.666rem;
-    --font-titulo-mediano-rem: 2rem;
-    --font-subtitulo-rem: 1.666rem;
-    --font-texto-rem: 1.25rem;
-    --font-boton-rem: 1.333rem;
-    --font-navegacion-b-rem: 1.25rem;
-    --font-navegacion-rem: 1.25rem;
-    --font-boton-s-rem: 1.166rem;
-    --font-etiqueta-b-rem: 1.166rem;
-    --font-etiqueta-rem: 1.166rem;
-    --font-metadato-rem: 1rem;
 
     /* Bordes */
     --radio-borde: 8px;
