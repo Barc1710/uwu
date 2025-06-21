@@ -50,21 +50,13 @@
     TÍTULOS GLOBALES
    ======================================== */
 
-h2 {
-    color: var(--Neutral-800, #1C1C1E);
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-}
-
 .products-title,
 .comprobant-title,
 .pago-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .comprobant-title{

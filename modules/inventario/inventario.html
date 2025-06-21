@@ -11,7 +11,171 @@
     <header>
         
     </header>
-    <div data-component="aside" data-app="store-admin"></div>
+
+    <aside class="sidebar">
+        <div class="aside">
+            <div class="aside-header">
+            <div class="logo-rol">
+                <a href="/modules/home/dashboard.html" class="logo">
+                    <img src="/shared/assets/favicon.svg" alt="">
+                    <p class="text-logo">uwuTech</p>
+                </a>
+                <div class="rol"><p>Administrador</p></div>
+            </div>
+            <div class="toggle">
+                <div class="toggle-button" id="toggle-button">
+                    <button><img src="/shared/assets/sidebar.svg" alt=""></button>
+                </div> 
+            </div>
+            </div>
+            <nav class="sidebar-menu">
+            
+            <ul class="nav">
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a href="/modules/home/dashboard.html" class="nav-link">
+                        <div>
+                            <i class="fas fa-home nav-icon"></i>
+                            <span>Dashboard</span>
+                        </div>
+                    </a>
+                    
+                    </div>
+                    
+                </li>
+                
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a href="/modules/perfiles/perfiles.html" class="nav-link">
+                        <div>
+                            <i class="fas fa-id-card-clip nav-icon"></i>
+                            <span>Perfiles</span>
+                        </div>
+                    </a>
+                    
+                    </div>
+
+                    <ul class="submenu">
+                        <li class="nav-submenu"><a href="/modules/perfiles/perfiles.html" class="nav-link">Gestionar Usuarios</a></li>
+                        <li class="nav-submenu"><a href="/modules/perfiles/roles.html" class="nav-link">Roles y Permisos</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a href="/modules/clients/clientes.html" class="nav-link">
+                            <div>
+                                <i class="fas fa-user-group nav-icon"></i>
+                                <span>Clientes</span>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a href="/modules/inventario/inventario.html" class="nav-link">
+                            <div>
+                                <i class="fas fa-box nav-icon"></i>
+                                <span>Inventario</span>
+                            </div>
+                        </a>
+                        <div class="active"></div>
+                    </div>
+                    <ul class="submenu-active">
+                        <li class="sub-active"><a href="/modules/inventario/inventario.html" class="nav-link">Productos y Stock</a></li>
+                        <li class="nav-submenu"><a href="/modules/inventario/ofertas/ofertas.html" class="nav-link">Ofertas y Promociones</a></li>
+                        <li class="nav-submenu"><a href="/modules/inventario/categorias/categorias.html" class="nav-link">Categorías y Marcas</a></li>
+                        <li class="nav-submenu"><a href="/modules/inventario/despacho/despacho.html" class="nav-link">Despacho</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a href="/modules/ventas/ventas.html" class="nav-link">
+                            <div>
+                                <i class="fa-solid fa-circle-dollar-to-slot nav-icon"></i>
+                                <span>Ventas</span>
+                            </div>
+                        </a>
+                        
+                    </div>
+                    <ul class="submenu">
+                        <li class="sub-active"><a href="/modules/ventas/caja.html" class="nav-link">Caja</a></li>
+                        <li class="nav-submenu"><a href="/modules/ventas/ventas.html" class="nav-link">Punto de Venta</a></li>
+                        <li class="nav-submenu"><a href="/modules/ventas/historial/historial.html" class="nav-link">Historial de Ventas</a></li>
+                        <li class="nav-submenu"><a href="/modules/ventas/pedidos/pedidos.html" class="nav-link">Pedidos</a></li>
+                        <li class="nav-submenu"><a href="/modules/ventas/devoluciones/devoluciones.html" class="nav-link">Devoluciones</a></li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a href="/modules/compras/compras.html" class="nav-link">
+                            <div>
+                                <i class="fas fa-shopping-cart nav-icon"></i>
+                                <span>Compras</span>
+                            </div>
+                        </a>
+                        
+                    </div>
+                    <ul class="submenu">
+                        <li class="nav-submenu"><a href="/modules/compras/proveedores/proveedores.html" class="nav-link">Proveedores</a></li>
+                        <li class="nav-submenu"><a href="/modules/compras/ordenes/ordenes.html" class="nav-link">Órdenes de Compra</a></li>
+                        <li class="nav-submenu"><a href="/modules/compras/recepcion/recepcion.html" class="nav-link">Recepción de Mercadería</a></li>
+                    </ul>
+                </li>
+
+               <!-- <li class="nav-item">
+                    <div class="modulo">
+                        <a href="/modules/reports/reportes.html" class="nav-link">
+                            <div>
+                                <i class="fas fa-chart-bar nav-icon"></i>
+                                <span>Reportes</span>
+                            </div>
+                        </a>
+                        
+                    </div>
+                    <ul class="submenu">
+                        <li class="nav-submenu"><a href="/modules/reportes/ventas.html" class="nav-link">Reporte de Ventas</a></li>
+                        <li class="nav-submenu"><a href="/modules/reportes/inventario.html" class="nav-link">Reporte de Inventario</a></li>
+                        <li class="nav-submenu"><a href="/modules/reportes/clientes.html" class="nav-link">Reporte de Clientes</a></li>
+                    </ul>
+                </li> -->
+                
+                <li class="nav-item">
+                    <div class="modulo">
+                        <a href="/modules/configuration/configuracion.html" class="nav-link">
+                            <div>
+                                <i class="fas fa-gear nav-icon"></i>
+                                <span>Configuración</span>
+                            </div>
+                        </a>
+                        
+                    </div>
+                    <ul class="submenu">
+                        <li class="nav-submenu"><a href="/modules/configuracion/empresa.html" class="nav-link">Datos de la Empresa</a></li>
+                        <li class="nav-submenu"><a href="/modules/configuracion/integraciones.html" class="nav-link">Integraciones</a></li>
+                    </ul>
+                </li>
+            </ul>
+            
+            </nav>
+        </div>
+
+
+        <div class="logout">
+                <a href="/modules/auth/logout.html" class="nav-link">
+                    <div>
+                        <i class="fas fa-sign-out-alt nav-icon"></i>
+                        <span>Cerrar Sesión</span>
+                    </div>
+                </a>
+        </div>
+
+    </aside>
+
+
     <main class="main-content">
 
     </main>

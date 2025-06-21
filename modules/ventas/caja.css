@@ -1,13 +1,20 @@
 
 .content{
     display: flex;
-align-items: flex-start;
-gap: 30px;
-flex: 1 0 0;
-align-self: stretch;
-margin-top: 15px;
+    align-items: flex-start;
+    gap: 30px;
+    flex: 1 0 0;
+    align-self: stretch;
+    margin-top: 15px;
 }
 
+.apertura-title,
+.historial-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
 .apertura {
     width: 300px;
     background: var(--color-blanco);
@@ -51,10 +58,10 @@ margin-top: 15px;
 
 .button{
     display: flex;
-flex-direction: column;
-align-items: flex-end;
-gap: 10px;
-align-self: stretch;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    align-self: stretch;
 }
 
 .apertura-form button {
