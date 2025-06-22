@@ -122,8 +122,8 @@
                         
                     </div>
                     <ul class="submenu-active">
-                        <li class="nav-submenu"><a href="/modules/compras/proveedores.html" class="nav-link">Proveedores</a></li>
-                        <li class="sub-active"><a href="/modules/compras/compras.html" class="nav-link">Órdenes de Compra</a></li>
+                        <li class="sub-active"><a href="/modules/compras/proveedores.html" class="nav-link">Proveedores</a></li>
+                        <li class="nav-submenu"><a href="/modules/compras/compras.html" class="nav-link">Órdenes de Compra</a></li>
                         <!--<li class="nav-submenu"><a href="/modules/compras/recepcion/recepcion.html" class="nav-link">Recepción de Mercadería</a></li> -->
                     </ul>
                 </li>
@@ -179,27 +179,20 @@
 
     <main class="main-content">
         <div class="title">
-            <p class="ubi">Módulos/Compras/Ordenes de Compra</p>
-            <h1 class="title-ubi">Ordenes de Compra</h1>
+            <p class="ubi">Módulos/Compras/Proveedores</p>
+            <h1 class="title-ubi">Proveedores</h1>
         </div>
         <div class="content">
-            <div class="compras-header">
-                <div class="compras-title"><h2>Lista de Ordenes de Compra</h2></div>
-                <button class="agregar-compra" type="button"><i class="fas fa-plus"></i><span>Nueva Compra</span></button>
+            <div class="proveedores-header">
+                <div class="proveedores-title"><h2>Lista de Proveedores</h2></div>
+                <button class="agregar-proveedor" type="button"><i class="fas fa-plus"></i><span>Nuevo Proveedor</span></button>
             </div>
             <div class="filtros">
                 <div class="buscar">
-                    <input type="text" placeholder="Buscar Compra" id="search-input">
+                    <input type="text" placeholder="Buscar proveedor" id="search-input">
                     <button class="search-button" type="button"><i class="fas fa-search"></i><span>Buscar</span></button>
                 </div>
                 
-                <select name="proveedor" id="proveedor">
-                    <option value="">Seleccionar Proveedor</option>
-                    <option value="proveedor1">Proveedor 1</option>
-                    <option value="proveedor2">Proveedor 2</option>
-                    <option value="proveedor3">Proveedor 3</option>
-                </select>
-
                 <select name="estado" id="estado">
                     <option value="">Estado</option>
                     <option value="disponible">Activo</option>
@@ -221,33 +214,33 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Comprobante</th>
-                            <th>Nro Comprobante</th>
+                            <th>RUC</th>
+                            <th>Razón Social</th>
                             <th>Proveedor</th>
-                            <th>Monto</th>
-                            <th>Fecha Compra</th>
+                            <th>Correo</th>
+                            <th>telefono</th>
                             <th>Estado</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
-                    <tbody id="compras-list">
+                    <tbody id="proveedores-list">
                         <!-- Aquí se cargarán los productos dinámicamente -->
                         <tr>
                             <td>1</td>
-                            <td>Factura</td>
-                            <td>F001</td>
+                            <td>24568975869</td>
+                            <td>Razzz</td>
                             <td>GRUPO INFOTEC S</td>
-                            <td>350</td>
-                            <td>10/06/2025</td>
+                            <td>gerencia@gmail.com</td>
+                            <td>01 738-2332</td>
                             <td><span class="estado-completo">completa</span></td>
                             <td class="acciones">
-                                <button class="btn-accion btn-ver" onclick="verCompra(1)">
+                                <button class="btn-accion btn-ver" onclick="verProveedor(1)">
                                     <i class="fas fa-eye"></i>
                                 </button>
-                                <button class="btn-accion btn-editar" onclick="editarCompra(1)">
+                                <button class="btn-accion btn-editar" onclick="editarProveedor(1)">
                                     <i class="fas fa-edit"></i>
                                 </button>
-                                <button class="btn-accion btn-eliminar" onclick="eliminarCompra(1)">
+                                <button class="btn-accion btn-eliminar" onclick="eliminarProveedor(1)">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </td>

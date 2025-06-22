@@ -7,7 +7,7 @@
    ======================================== */
 
 
-.content {
+.content-ventas{
     display: flex;
     margin-top: 15px;
     align-items: flex-start;
@@ -168,69 +168,6 @@ align-self: stretch;
 }
 
 /* ========================================
-    BOTONES PRINCIPALES
-   ======================================== */
-
-.btn-agregar-cliente,
-.buscar-limpiar button,
-.btn-guardar,
-.btn-cancelar {
-    display: flex;
-    padding: 8px 12px;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    border-radius: 14px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    border: none;
-    font-size: 14px;
-    font-weight: 700;
-}
-
-/* Botón Agregar Cliente */
-.btn-agregar-cliente {
-    background: var(--azul, #007AFF);
-    color: var(--color-blanco);
-    margin-left: auto;
-}
-
-.btn-agregar-cliente:hover {
-    background: var(--azul-hover);
-}
-
-.btn-agregar-cliente i {
-    color: var(--color-blanco);
-}
-
-/* Botones de Búsqueda */
-.buscar-limpiar button {
-    background: var(--azul, #007AFF);
-    color: var(--color-blanco);
-}
-
-.buscar-limpiar button:hover {
-    background: var(--azul-hover)
-}
-
-/* Botón Limpiar */
-.btn-limpiar {
-    background: var(--color-blanco) !important;
-    border: 2px solid var(--azul, #007AFF) !important;
-    color: var(--azul, #007AFF) !important;
-}
-
-.btn-limpiar:hover {
-    background: var(--azul, #007AFF) !important;
-    color: var(--color-blanco) !important;
-}
-
-.btn-limpiar i,
-.btn-limpiar span {
-    color: inherit;
-}
-
-/* ========================================
     SECCIÓN PRODUCTOS
    ======================================== */
 
@@ -242,27 +179,10 @@ align-self: stretch;
     margin-bottom: 20px;
 }
 
-.buscar {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex: 1;
+.buscar{
+    margin-right: 10px;
 }
 
-.buscar-limpiar input {
-    display: flex;
-    padding: 12px 15px;
-    align-items: center;
-    width: 300px;
-    border-radius: 16px;
-    border: 1px solid var(--neutral-300, #C7C7CC);
-    background: var(--color-blanco, #FFF);
-}
-
-.buscar-limpiar input:focus {
-    outline: none;
-    border: 2px solid var(--azul, #007AFF);
-}
 
 /* ========================================
     TABLA DE PRODUCTOS
@@ -451,46 +371,11 @@ align-self: stretch;
     display: flex;
     height: auto;
     align-items: center;
-    gap: 12px;
+    justify-content: space-between;
+    gap: 15px;
     flex-shrink: 0;
     align-self: stretch;
-}
-
-.btn-guardar,
-.btn-cancelar {
-    display: flex;
-    height: 45px;
-    padding: 12px 24px;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    border-radius: 10px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    border: none;
-    flex: 1;
-}
-
-.btn-guardar {
-    background: var(--azul, #007AFF);
-    color: var(--color-blanco);
-}
-
-.btn-guardar:hover {
-    background: #0056CC;
-}
-
-.btn-cancelar {
-    background: var(--color-blanco);
-    border: 2px solid var(--azul, #007AFF);
-    color: var(--azul, #007AFF);
-}
-
-.btn-cancelar:hover {
-    background: var(--azul, #007AFF);
-    color: var(--color-blanco);
+    margin: 0px 20px;
 }
 
 /* ========================================

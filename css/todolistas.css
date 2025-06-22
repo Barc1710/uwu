@@ -17,7 +17,9 @@
 .categorias-header,
 .devoluciones-header,
 .pedidos-header,
-.historial-header {
+.historial-header,
+.proveedores-header,
+.compras-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -89,7 +91,12 @@
 .agregar-categoria,
 .agregar-devolucion,
 .agregar-pedido,
-.aplicar {
+.agregar-proveedor,
+.agregar-compra,
+.aplicar,
+.btn-agregar-cliente,
+.btn-buscar,
+.btn-guardar {
     display: flex;
     padding: 12px 16px;
     justify-content: center;
@@ -108,7 +115,9 @@
     box-sizing: border-box;
 }
 
-.limpiar {
+.limpiar,
+.btn-limpiar,
+.btn-cancelar {
     display: flex;
     padding: 12px 16px;
     justify-content: center;
@@ -134,12 +143,19 @@
 .agregar-categoria:hover,
 .agregar-devolucion:hover
 .agregar-pedido:hover,
-.aplicar:hover {
+.agregar-proveedor:hover,
+.agregar-compra:hover,
+.aplicar:hover,
+.btn-agregar-cliente:hover,
+.btn-buscar:hover,
+.btn-guardar:hover {
     background: var(--azul-hover, #0056CC);
     border-color: var(--azul-hover, #0056CC);
 }
 
-.limpiar:hover {
+.limpiar:hover ,
+.btn-limpiar:hover,
+.btn-cancelar:hover {
     background: var(--azul) !important;
     color: var(--color-blanco) !important;
 }
