@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/styles.css">
-    <link rel="stylesheet" href="caja.css">
+    <link rel="stylesheet" href="../../css/todolistas.css">
+    <link rel="stylesheet" href="inventario.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <title>uwu | Caja</title>
+    <title>uwu | Devoluciones</title>
 </head>
 <body>
     <header>
+        
     </header>
-    <aside class="sidebar">
 
+    <aside class="sidebar">
         <div class="aside">
             <div class="aside-header">
             <div class="logo-rol">
@@ -83,9 +85,9 @@
                     </div>
                     <ul class="submenu">
                         <li class="nav-submenu"><a href="/modules/inventario/inventario.html" class="nav-link">Productos y Stock</a></li>
-                        <li class="nav-submenu"><a href="/modules/inventario/ofertas/ofertas.html" class="nav-link">Ofertas y Promociones</a></li>
-                        <li class="nav-submenu"><a href="/modules/inventario/categorias/categorias.html" class="nav-link">Categorías y Marcas</a></li>
-                        <li class="nav-submenu"><a href="/modules/inventario/despacho/despacho.html" class="nav-link">Despacho</a></li>
+                        <li class="nav-submenu"><a href="/modules/inventario/ofertas.html" class="nav-link">Ofertas</a></li>
+                        <li class="nav-submenu"><a href="/modules/inventario/categorias.html" class="nav-link">Categorías y Marcas</a></li>
+                        <li class="nav-submenu"><a href="/modules/inventario/despacho.html" class="nav-link">Despacho</a></li>
                     </ul>
                 </li>
                 
@@ -98,13 +100,14 @@
                             </div>
                         </a>
                         <div class="active"></div>
+                        
                     </div>
                     <ul class="submenu-active">
-                        <li class="sub-active"><a href="/modules/ventas/caja.html" class="nav-link">Caja</a></li>
+                        <li class="nav-submenu"><a href="/modules/ventas/caja.html" class="nav-link">Caja</a></li>
                         <li class="nav-submenu"><a href="/modules/ventas/ventas.html" class="nav-link">Punto de Venta</a></li>
                         <li class="nav-submenu"><a href="/modules/ventas/historial.html" class="nav-link">Historial de Ventas</a></li>
                         <li class="nav-submenu"><a href="/modules/ventas/pedidos.html" class="nav-link">Pedidos</a></li>
-                        <li class="nav-submenu"><a href="/modules/ventas/devoluciones.html" class="nav-link">Devoluciones</a></li>
+                        <li class="sub-active"><a href="/modules/ventas/devoluciones.html" class="nav-link">Devoluciones</a></li>
                     </ul>
                 </li>
                 
@@ -125,7 +128,7 @@
                     </ul>
                 </li>
 
-               <!-- <li class="nav-item">
+                <!-- <li class="nav-item">
                     <div class="modulo">
                         <a href="/modules/reports/reportes.html" class="nav-link">
                             <div>
@@ -175,73 +178,92 @@
     </aside>
 
     <main class="main-content">
-
         <div class="title">
-            <p class="ubi">Módulos/Ventas/Caja</p>
-            <h1 class="title-ubi">Caja</h1>
+            <p class="ubi">Módulos/Ventas/Devoluciones</p>
+            <h1 class="title-ubi">Devoluciones</h1>
         </div>
-
         <div class="content">
-            <div class="apertura">
-                <div class="apertura-title"><h2>Apertura de Caja</h2></div>
-                <div class="apertura-content">
-                    <form id="apertura-form" class="apertura-form">
-                        <label for="Caja">Caja</label>
-                        <select name="num-caja" id="num-caja">
-                            <option value="Caja 1">Caja 1</option>
-                            <option value="Caja 2">Caja 2</option>
-                            <option value="Caja 3">Caja 3</option>
-                        </select>
-                        <label for="monto-apertura">Monto de Apertura:</label>
-                        <input type="number" id="monto-apertura" name="monto-apertura" required>
-                        <label for="fecha-apertura">Fecha de Apertura:</label>
-                        <input type="date" id="fecha-apertura" name="fecha-apertura" required>
-                        <label for="hora-apertura">Hora de Apertura</label>
-                        <input type="time" id="hora-apertura" name="hora-apertura" required>
-                        <div class="button">
-                            <button type="submit">
-                                <i class="fas fa-circle-up"></i>
-                                <span>Abrir Caja</span>
-                            </button>
-                        </div>
-                    </form>
+            <div class="devoluciones-header">
+                <div class="devoluciones-title"><h2>Lista de Solicitudes de Devolución</h2></div>
+                <button class="agregar-producto" type="button"><i class="fas fa-plus"></i><span>Nueva Devolución</span></button>
+            </div>
+            <div class="filtros">
+                <div class="buscar">
+                    <input type="text" placeholder="Buscar devoluciones" id="search-input">
+                    <button class="search-button" type="button"><i class="fas fa-search"></i><span>Buscar</span></button>
                 </div>
+
+                <select name="estado" id="estado">
+                    <option value="">Estado</option>
+                    <option value="disponible">Activo</option>
+                    <option value="inactivo">Inactivo</option>
+                    <option value="proximamente">Próximamente</option>
+                </select>
+
+                <select name="ordenar" id="ordenar">
+                    <option value="">Ordenar por</option>
+                    <option value="nombre">Nombre</option>
+                    <option value="precio">Precio</option>
+                    <option value="stock">Stock</option>
+                </select>
+
             </div>
 
-            <div class="historial">
-                <div class="historial-title"><h2>Historial de Sesiones</h2></div>
-                <div class="historial-content">
-                    <table id="historial-sesiones">
-                        <thead>
-                            <tr>
-                                <th>Caja</th>
-                                <th>Monto Apertura</th>
-                                <th>Fecha Apertura</th>
-                                <th>Fecha Cierre</th>
-                                <th>Monto Inicial</th>
-                                <th>Monto Final</th>
-                                <th>Usuario</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Aquí se llenarán las filas con JavaScript -->
-                            <tr>
-                                <td>Caja 1</td>
-                                <td>500.00</td>
-                                <td>2024-06-01</td>
-                                <td>2024-06-01</td>
-                                <td>500.00</td>
-                                <td>1000.00</td>
-                                <td>admin</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <div class="table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Cod. Devolucion</th>
+                            <th>Cod. Pedido</th>
+                            <th>Cliente</th>
+                            <th>Fecha</th>
+                            <th>Motivo </th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="despacho-list">
+                        <!-- Aquí se cargarán los productos dinámicamente -->
+                        <tr>
+                            <td>1</td>
+                            <td>DEV-1001</td>
+                            <td>PED-2505</td>
+                            <td>Pepito Juarez</td>
+                            <td>20/06/2025 19:09</td>
+                            <td>La entrada de disco mal</td>
+                            <td><span class="estado-completo">Completo</span></td>
+                            <td class="acciones">
+                                <button class="btn-accion btn-ver" onclick="verDevolucion(1)">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+
             </div>
+            <div class="paginacion">
+                <button class="btn-paginacion" id="prev-page" disabled>
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button><span id="page-info">1</span></button>
+                <button><span id="page-info">2</span></button>  
+                <button><span id="page-info">3</span></button>
+                <p>...</p>
+                <button><span id="page-info">10</span></button>
+
+                <button class="btn-paginacion" id="next-page">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
         </div>
-
     </main>
+
     <div data-component="footer" data-app="store-admin"></div>
     <script src="../../js/sotore-admin.js"></script>
+    <script src="inventario.js"></script>
 </body>
 </html>

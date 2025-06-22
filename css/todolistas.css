@@ -14,7 +14,10 @@
 .ofertas-header,
 .despacho-header,
 .marcas-header,
-.categorias-header {
+.categorias-header,
+.devoluciones-header,
+.pedidos-header,
+.historial-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -25,11 +28,17 @@
 .filtros {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
     align-self: stretch;
     gap: 15px;
     margin-bottom: 20px;
     flex-wrap: wrap;
+}
+
+.filtros-header{
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
 }
 
 .buscar {
@@ -41,7 +50,8 @@
 }
 
 .buscar input,
-.filtros select {
+.filtros select,
+.filtros input{
     display: flex;
     padding: 12px 16px;
     align-items: center;
@@ -52,6 +62,12 @@
     outline: none;
     min-width: 140px;
     box-sizing: border-box;
+}
+
+.filtros label{
+    font-size: 14px;
+    color: var(--neutral-800, #1C1C1E);
+    font-weight: 600;
 }
 
 .buscar input {
@@ -70,7 +86,10 @@
 .agregar-producto,
 .agregar-oferta,
 .agregar-marca,
-.agregar-categoria {
+.agregar-categoria,
+.agregar-devolucion,
+.agregar-pedido,
+.aplicar {
     display: flex;
     padding: 12px 16px;
     justify-content: center;
@@ -80,8 +99,27 @@
     border-radius: 16px;
     background: var(--azul, #007AFF);
     border: 2px solid var(--azul, #007AFF);
+    color: var(--color-blanco, #FFF);
     cursor: pointer;
-    transition: all 0.3s ease;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    min-width: 120px;
+    box-sizing: border-box;
+}
+
+.limpiar {
+    display: flex;
+    padding: 12px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    height: 44px;
+    border-radius: 16px;
+    background: var(--color-blanco) !important;
+    border: 2px solid var(--azul, #007AFF) !important;
+    color: var(--azul, #007AFF) !important;
+    cursor: pointer;
     text-decoration: none;
     font-size: 14px;
     font-weight: 600;
@@ -93,35 +131,19 @@
 .agregar-producto:hover,
 .agregar-oferta:hover,
 .agregar-marca:hover,
-.agregar-categoria:hover {
+.agregar-categoria:hover,
+.agregar-devolucion:hover
+.agregar-pedido:hover,
+.aplicar:hover {
     background: var(--azul-hover, #0056CC);
     border-color: var(--azul-hover, #0056CC);
 }
 
-.search-button i,
-.agregar-producto i,
-.agregar-oferta i,
-.agregar-marca i,
-.agregar-categoria i {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--color-blanco, #FFF);
-    font-size: 14px;
+.limpiar:hover {
+    background: var(--azul) !important;
+    color: var(--color-blanco) !important;
 }
 
-.search-button span,
-.agregar-producto span,
-.agregar-oferta span,
-.agregar-marca span,
-.agregar-categoria span {
-    color: var(--color-blanco, #FFF);
-    text-align: center;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-}
 
 /* Estilos de tabla */
 .table {
@@ -167,7 +189,8 @@
 
 .estado-disponible,
 .estado-activo,
-.estado-enviado {
+.estado-enviado,
+.estado-completo {
     color: var(--verde, #34C759);
     font-weight: 600;
     border-radius: 10px;
@@ -185,7 +208,8 @@
     padding: 3px;
 }
 
-.estado-listo {
+.estado-listo,
+.estado-pendiente {
     color: var(--azul);
     font-weight: 600;
     border-radius: 10px;
