@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/modals.css">
     <link rel="stylesheet" href="inventario.css">
     <link rel="stylesheet" href="../../css/todolistas.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -301,8 +302,144 @@
         </div>
     </main>
 
+    <!-- Modal para Agregar Producto -->
+    <div id="modal-agregar-producto" class="modal">
+        <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Agregar Producto</h2>
+                    <span class="close">&times;</span>
+                </div>
+                <div class="modal-body-2">
+                    <div class="body-izquierda">
+                        <div class="imagen-modal">
+                            <div class="upload-box" onclick="document.getElementById('mainImage').click()">
+                                <input type="file" id="mainImage" class="file-input" accept="image/*">
+                                <i class="fas fa-image"></i>
+                                <p class="text-img">Imagen Principal</p>
+                            </div>
+        
+                            <div class="upload-box" onclick="document.getElementById('secondaryImage').click()">
+                                <input type="file" id="secondaryImage" class="file-input" accept="image/*">
+                                <i class="fas fa-upload"></i>
+                                <p class="text-img">Subir Imagen</p>
+                            </div>
+                        </div>
+                        <div class="campo-colum">
+                            <label for="cod-product">Código del Producto (SKU):</label>
+                            <input type="text" id="cod-product" placeholder="Código del Producto">
+                        </div>
+                        <div class="campo-colum">
+                            <label for="nombre-product">Nombre del Producto:</label>
+                            <input type="text" id="nombre-product" placeholder="Nombre del Producto">
+                        </div>
+                        <div class="campo-row">
+                            <label for="marca-product">Marca:</label>
+                            <select name="marca-product" id="marca-product">
+                                <option value="">Seleccionar Marca</option>
+                                <option value="Asus">ASUS</option>
+                                <option value="Samsung">SAMSUNG</option>
+                                <option value="Apple">APPLE</option>
+                                <option value="HP">HP</option>
+                                <option value="Dell">DELL</option>
+                                <option value="Lenovo">LENOVO</option>
+                                <option value="Acer">ACER</option>
+                                <option value="Xiaomi">XIAOMI</option>
+                                <option value="MSI">MSI</option>
+                                <option value="Logitech">LOGITECH</option>
+                                <option value="Razer">RAZER</option>
+                            </select>
+                        </div>
+                        <div class="campo-row">
+                            <label for="categoria-product">Categoría:</label>
+                            <select name="categoria-product" id="categoria-product">
+                                <option value="">Seleccionar Categoría</option>
+                                <option value="laptop">Laptops</option>
+                                <option value="celular">Celulares</option>
+                                <option value="monitor">Monitores</option>
+                                <option value="teclado">Teclados</option>
+                                <option value="mouse">Mouse</option>
+                                <option value="audifonos">Audífonos</option>
+                                <option value="impresora">Impresoras</option>
+                                <option value="accesorios">Accesorios</option>
+                                <option value="componentes">Componentes</option>
+                                <option value="otros">Otros</option>
+                            </select>
+                        </div>
+                        <div class="campo-colum">
+                            <label for="descripcion-product">Descripcion:
+                            </label>
+                            <textarea id="descripcion-product" placeholder="Descripción del Producto"></textarea>
+                        </div>
+                    </div>
+                    <div class="body-derecha">
+                        <div class="derecha-superior">
+                            <div class="campo-colum">
+                                <label for="unidad-medida">Unidad de Medida:</label>
+                                <select name="unidad-medida" id="unidad-medida">
+                                    <option value="">Seleccionar Unidad</option>
+                                    <option value="unidad">Unidad</option>
+                                    <option value="kilogramo">Kit</option>
+                                    <option value="litro">Caja</option>
+                                    <option value="metro">Otros</option>
+                                </select>
+                            </div>
+    
+                            <div class="campo-row">
+                                <label for="precio-product">Precio:</label>
+                                <input type="number" id="precio-product" placeholder="Precio del Producto">
+                            </div>
+    
+                            <div class="campo-row">
+                                <label for="impuesto-product">Impuesto:</label>
+                                <input type="number" id="impuesto-product" placeholder="Impuesto">
+                            </div>
+    
+                            <div class="campo-row">
+                                <label for="costo-product">Costo:</label>
+                                <input type="number" id="costo-product" placeholder="Costo del Producto">
+                            </div>
+    
+                            <div class="campo-colum">
+                                <label for="estado-product">Estado del Producto</label>
+                                <select name="estado-product" id="estado-product">
+                                    <option value="">Seleccionar Estado</option>
+                                    <option value="disponible">Disponible</option>
+                                    <option value="agotado">Agotado</option>
+                                    <option value="descontinuado">Descontinuado</option>
+                                </select>
+                            </div>
+    
+                            <div class="campo-colum">
+                                <label for="dimenciones-product">Dimenciiones (en cm): </label>
+                                <input type="text" id="dimenciones-product">
+                            </div>
+    
+                            <div class="campo-colum">
+                                <label for="peso-product">Peso (en kg): </label>
+                                <input type="number" id="peso-product" placeholder="Peso del Producto">
+                            </div>
+    
+                            <div class="campo-colum">
+                                <label for="stock-product">Stock: </label>
+                                <input type="number" id="stock-product" placeholder="Stock Inicial">
+                            </div>
+                        </div>
+
+                        <div class="botones">
+                            <button class="btn-modal-azul" id="guardar-producto"><i class="fas fa-save"></i><span>Guardar</span></button>
+                            <button class="btn-modal-blanco" id="cancelar-agregar"><i class="fas fa-times"></i><span>Cancelar</span></button>
+                        </div>
+
+
+                    </div>
+                </div>
+        </div>
+    </div>
+
     <div data-component="footer" data-app="store-admin"></div>
     <script src="../../js/sotore-admin.js"></script>
     <script src="inventario.js"></script>
+    <script src="../../js/modal.js"></script>
+
 </body>
 </html>
