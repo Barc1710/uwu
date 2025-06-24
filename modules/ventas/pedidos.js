@@ -1,37 +1,35 @@
-
-
 //=========================================
-// Modal para agregar compra
+// Modal para agregar pedido
 //=========================================
 // Obtener elementos del modal
-const modalcompra = document.getElementById('modal-agregar-compra');
-const btnAgregarCompra = document.querySelector('.agregar-compra');
-const spanClosecompra = document.querySelector('#modal-agregar-compra .close');
+const modalpedido = document.getElementById('modal-agregar-pedido');
+const btnAgregarPedido = document.querySelector('.agregar-pedido');
+const spanClosepedido = document.querySelector('#modal-agregar-pedido .close');
 
 // Abrir modal cuando se hace clic en "Agregar compra"
-btnAgregarCompra.addEventListener('click', function() {
-    modalcompra.style.display = 'block';
+btnAgregarPedido.addEventListener('click', function() {
+    modalpedido.style.display = 'block';
     document.body.style.overflow = 'hidden'; // Prevenir scroll del body
 });
 
 // Cerrar modal cuando se hace clic en la X
-spanClosecompra.addEventListener('click', function() {
-    modalcompra.style.display = 'none';
+spanClosepedido.addEventListener('click', function() {
+    modalpedido.style.display = 'none';
     document.body.style.overflow = 'auto'; // Restaurar scroll del body
 });
 
 // Cerrar modal cuando se hace clic fuera del modal
 window.addEventListener('click', function(event) {
-    if (event.target === modalcompra) {
-        modalcompra.style.display = 'none';
+    if (event.target === modalpedido) {
+        modalpedido.style.display = 'none';
         document.body.style.overflow = 'auto';
     }
 });
 
 // Cerrar modal con la tecla Escape
 document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape' && modalcompra.style.display === 'block') {
-        modalcompra.style.display = 'none';
+    if (event.key === 'Escape' && modalpedido.style.display === 'block') {
+        modalpedido.style.display = 'none';
         document.body.style.overflow = 'auto';
     }
 });

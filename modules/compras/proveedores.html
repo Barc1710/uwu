@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../../css/styles.css">
     <link rel="stylesheet" href="../../css/todolistas.css">
     <link rel="stylesheet" href="compras.css">
+    <link rel="stylesheet" href="../../css/modals.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>uwu | Ordenes de Compra</title>
 </head>
@@ -268,8 +269,59 @@
         </div>
     </main>
 
+    
+    <!--modal para agregar-proveedor-->
+    <div id="modal-agregar-proveedor" class="modal">
+        <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Agregar Proveedor</h2>
+                    <span class="close">&times;</span>
+                </div>
+                <div class="modal-body-2">
+            
+                    <div class="body-derecha">
+                        <div class="derecha-superior">
+                            <div class="campo-colum">
+                                <label for="ruc-proveedor">RUC:</label>
+                                <input type="text" id="ruc-proveedor" placeholder="ruc del Proveedor" disabled>
+                            </div>
+                            <div class="campo-colum">
+                                <label for="proveedor">Proveedor:</label>
+                                <input type="text" id="proveedor" placeholder="Proveedor">
+                            </div>
+                            <div class="campo-colum">
+                                <label for="nombre-encargado">Nombre Encargado:</label>
+                                <input type="text" id="encargado" placeholder="encargado">
+                            </div>
+    
+                            <div class="campo-colum">
+                                <label for="correo-proveedor">Correo:</label>
+                                <input type="text" id="correo-proveedor" placeholder="~">
+                            </div>
+                            <div class="campo-colum">
+                                <label for="telefono-proveedor">Telefono:</label>
+                                <input type="text" id="telefono-proveedor" placeholder="~">
+                            </div>
+    
+                            <div class="campo-colum">
+                                <label for= direccion-proveedor">Dirección: </label>
+                                <input type="text" id="direccion-proveedor" placeholder="~">
+                            </div>
+                        </div>
+
+                        <div class="botones">
+                            <button class="btn-modal-azul" id="guardar-proveedor"><i class="fas fa-save"></i><span>Guardar</span></button>
+                        </div>
+
+
+                    </div>
+                </div>
+        </div>
+    </div>
+
     <div data-component="footer" data-app="store-admin"></div>
     <script src="../../js/sotore-admin.js"></script>
-    <script src="inventario.js"></script>
+    <script src="proveedor.js"></script>
+    
 </body>
 </html>

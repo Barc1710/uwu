@@ -186,11 +186,11 @@
         <div class="content">
             <div class="ofertas-header">
                 <div class="ofertas-title"><h2>Lista de Ofertas</h2></div>
-                <button class="agregar-oferta" type="button"><i class="fas fa-plus"></i><span>Agregar Oferta</span></button>
+                <button class="agregar-proveedor" type="button"><i class="fas fa-plus"></i><span>Agregar Proveedor</span></button>
             </div>
             <div class="filtros">
                 <div class="buscar">
-                    <input type="text" placeholder="Buscar oferta" id="search-input">
+                    <input type="text" placeholder="Buscar-proveedor" id="search-input">
                     <button class="search-button" type="button"><i class="fas fa-search"></i><span>Buscar</span></button>
                 </div>
                 <select name="alcance" id="alcance">
@@ -202,7 +202,7 @@
                     
                 </select>
                 <select name="tipo" id="tipo">
-                    <option value="">Tipo de Oferta</option>
+                    <option value="">Tipo de Proveedor</option>
                     <option value="descuento">Descuento</option>
                     <option value="combo">Combo</option>
                     <option value="envio-gratis">Envío Gratis</option>
@@ -217,7 +217,7 @@
 
                 <select name="ordenar" id="ordenar">
                     <option value="">Ordenar por</option>
-                    <option value="nombre">Nombre</option>
+                    <option value="nombre">Proveedor</option>
                     <option value="precio">Precio</option>
                     <option value="stock">Stock</option>
                 </select>
@@ -230,7 +230,7 @@
                         <tr>
                             <th>#</th>
                             <th>Código</th>
-                            <th>Nombre</th>
+                            <th>Proveedor</th>
                             <th>Alcance</th>
                             <th>Tipo</th>
                             <th>Fecha Inicio</th>
@@ -239,7 +239,7 @@
                             <th>Acciones</th>
                         </tr>
                     </thead>
-                    <tbody id="oferta-list">
+                    <tbody id=-proveedor-list">
                         <!-- Aquí se cargarán los productos dinámicamente -->
                         <tr>
                             <td>1</td>
@@ -284,6 +284,7 @@
             
         </div>
     </main>
+
     <div id="modal-agregar-oferta" class="modal">
         <div class="modal-content">
                 <div class="modal-header">
@@ -359,7 +360,7 @@
                 </div>
         </div>
     </div>
-
+    
     <div data-component="footer" data-app="store-admin"></div>
     <script src="../../js/sotore-admin.js"></script>
     <script src="ofertas.js"></script>

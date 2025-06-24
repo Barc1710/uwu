@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/styles.css">
     <link rel="stylesheet" href="../../css/todolistas.css">
+    <link rel="stylesheet" href="../../css/modals.css">
     <link rel="stylesheet" href="inventario.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>uwu | Devoluciones</title>
@@ -185,7 +186,7 @@
         <div class="content">
             <div class="devoluciones-header">
                 <div class="devoluciones-title"><h2>Lista de Solicitudes de Devolución</h2></div>
-                <button class="agregar-producto" type="button"><i class="fas fa-plus"></i><span>Nueva Devolución</span></button>
+                <button class="agregar-devolucion" type="button"><i class="fas fa-plus"></i><span>Nueva Devolución</span></button>
             </div>
             <div class="filtros">
                 <div class="buscar">
@@ -262,8 +263,98 @@
         </div>
     </main>
 
+    <!--modal para nuevo devolucion-->
+    <div id="modal-agregar-devolucion" class="modal">
+        <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Detalles de Devolución</h2>
+                    <span class="close">&times;</span>
+                </div>
+                <div class="modal-body-3">
+                    <div class="modal-body-2">
+                        <div class="body-izquierda">
+                            <div class="campo-colum">
+                                <label for="id-devolucion">Id Devolución:</label>
+                                <input type="text" id="id-devolucion" placeholder="~">
+                            </div>
+                            <div class="campo-colum">
+                                <label for="ruc/dni">DNI/RUC:</label>
+                                <input type="text" id="ruc/dni" placeholder="~">
+                            </div>
+                        </div>
+                        <div class="body-izquierda">
+                            <div class="campo-colum">
+                                <label for="id-pedido">Id Pedido:</label>
+                                <input type="text" id="id-pedido" placeholder="~">
+                            </div>
+                            <div class="campo-colum">
+                                <label for="cliente">Cliente:</label>
+                                <input type="text" id="cliente" placeholder="~">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-body-1">
+                        <div class="title-h4">
+                            <h4>Producto(s) a Devolver:</h4>
+                        </div>
+
+                        <div class="tabla-modal-contenedor">
+                            <table class="tabla-modal">
+                                <thead class="thead-modal">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Código</th>
+                                        <th>Nombre</th>
+                                        <th>Cantidad</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="tbody-modal">
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><button class="detalle" id="detalle">Ver detalle</button></td>
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+                        
+                        </div>
+                        
+                        <div class="title-h4">
+                            <h4>Registrar Veredicto de Inspección:</h4>
+                        </div>
+                        <br>
+                        <div class="campo-colum">
+                            <label for="resultado-inspeccion">Resultado de la Inspección:</label>
+                            <select name="categoria-product" id="categoria-product">
+                                <option value="conforme">Conforme</option>
+                                <option value="daño">Daño por cliente</option>
+                                <option value="defecto">Defecto de Fabrica</option>
+                                <option value="otros">Otros</option>
+                            </select>
+                        </div>
+                        <br>
+                        <div class="campo-colum">
+                            <label for="nota">Nota interna:
+                            </label>
+                            <textarea id="nota-devolucion" placeholder="~"></textarea>
+                        </div>
+                        <br>
+                        <div class="botones">
+                            <button class="btn-modal-azul" id="registrar-veredicto"><i class="fas fa-circle-check"></i><span>Registrar Veredicto</span></button>
+                        </div>
+
+                    </div>
+                    
+                </div>
+        </div>
+    </div>
+
     <div data-component="footer" data-app="store-admin"></div>
     <script src="../../js/sotore-admin.js"></script>
-    <script src="inventario.js"></script>
+    <script src="devoluciones.js"></script>
 </body>
 </html>
