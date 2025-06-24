@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/styles.css">
     <link rel="stylesheet" href="../../css/todolistas.css">
+    <link rel="stylesheet" href="../../css/modals.css">
     <link rel="stylesheet" href="compras.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>uwu | Ordenes de Compra</title>
@@ -275,8 +276,103 @@
         </div>
     </main>
 
+    <!--modal par crear orden de compra-->
+    <div id="modal-agregar-compra" class="modal">
+        <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Crear Orden de Compra</h2>
+                    <span class="close">&times;</span>
+                </div>
+                <div class="modal-body-2">
+                    <div class="body-izquierda">
+                        <div class="title-h4">
+                            <h4>Proveedor</h4>
+                            <!--<button class="btn-modal-azul" id="agregar-proveedor"><i class="fas fa-plus"></i><span>Agregar</span></button>-->
+                        </div>
+                        
+                        <div class="campo-colum">
+                            <label for="ruc">RUC:</label>
+                            <input type="text" id="ruc" placeholder="RUC">
+                        </div>
+                        <div class="campo-colum">
+                            <label for="razon-social">Razoón Social:</label>
+                            <input type="text" id="razon-social" placeholder="~">
+                        </div>
+                        <div class="campo-colum">
+                            <label for="direccion">Dirección:</label>
+                            <input type="text" id="direccion-proveedor" placeholder="~">
+                        </div>
+
+                        <div class="campo-colum">
+                            <label for="tipo-comprobante">Tipo de Comprobante:</label>
+                            <select name="comprobante" id="comprobante">
+                                <option value="boleta">Boleta</option>
+                                <option value="factura">Factura</option>
+                            </select>
+                        </div>
+                        <div class="campo-colum">
+                            <label for="numero-comprobante">Nro. Comprobante:</label>
+                            <input type="text" id="numero-comprobante" placeholder="~">
+                        </div>
+                        <div class="campo-colum">
+                            <label for="fecha-emision">Fecha de Emisión:</label>
+                            <input type="date" id="fecha-emision" placeholder="~">
+                        </div>
+                        <div class="campo-colum">
+                            <label for="tipo-compra">Tipo de Compra:</label>
+                            <select name="tipo-compra" id="tipo-compra">
+                                <option value="Contado">Al Contado</option>
+                                <option value="cuotas">A cuotas</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="body-derecha">
+                        <div class="derecha-superior">
+                            <div class="title-h4">
+                                <h4>Productos:</h4>
+                                <button class="btn-modal-azul" id="agregar-producto"><i class="fas fa-plus"></i><span>Agregar</span></button>
+                            </div>
+                            <div class="tabla-modal-contenedor">
+                                <table class="tabla-modal">
+                                    <thead class="thead-modal">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Código</th>
+                                            <th>Nombre</th>
+                                            <th>Precio Unitario</th>
+                                            <th>Cantidad</th>
+                                            <th>Subtotal</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="tbody-modal">
+                                        
+    
+                                    </tbody>
+                                </table>
+                            
+                                
+                            </div>
+                            </div>  
+
+                            <div class="botones2">
+                                <div class="campo-row input-total">
+                                    <label for="total">Total:</label>
+                                    <input type="text" id="total" placeholder="S/" disabled>
+                                </div>
+                                <button class="btn-modal-azul" id="crear-orden"><i class="fas fa-plus"></i><span>Crear Orden de Compra</span></button>
+                                <!--<button class="btn-modal-blanco" id="cancelar-crear-orden"><i class="fas fa-times"></i><span>Cancelar</span></button>-->
+                            </div>
+
+
+                    </div>
+                </div>
+        </div>
+    </div>
+
     <div data-component="footer" data-app="store-admin"></div>
     <script src="../../js/sotore-admin.js"></script>
     <script src="inventario.js"></script>
+    <script src="compras.js"></script>
 </body>
 </html>
