@@ -1,0 +1,44 @@
+/*
+   ====================Estilos de la tabla====================
+*/
+.tabla {
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1 0 0;
+    align-self: stretch;
+    border-radius: 20px;
+    background: var(--color-blanco, #FFF);
+}
+
+.tabla table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 14px;
+    background: var(--color-blanco, #FFF);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.tabla th {
+    padding: 15px 12px;
+    text-align: left;
+    font-weight: 600;
+    color: var(--neutral-800, #1C1C1E);
+    font-size: 13px;
+    text-transform: none;
+    letter-spacing: 0.5px;
+    border-bottom: solid 1px var(--neutral-300);
+}
+
+.tabla td {
+    padding: 12px;
+    color: var(--neutral-700, #48484A);
+    vertical-align: middle;
+    background: var(--color-blanco, #FFF);
+    border-bottom: solid 1px var(--neutral-300);
+}
+

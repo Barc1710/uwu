@@ -1,18 +1,16 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/styles.css">
-    
     <link rel="stylesheet" href="/modules/perfiles/General-Perfil.css">
-    <link rel="stylesheet" href="/modules/perfiles/perfiles.css">
+    <link rel="stylesheet" href="/modules/perfiles/roles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <title>uwu | Usuarios</title>
+
+    <title>Document</title>
 </head>
 <body>
-    <header>
-    </header>
     <aside class="sidebar">
 
         <div class="aside">
@@ -60,8 +58,8 @@
                     </div>
 
                     <ul class="submenu-active">
-                        <li class="sub-active   "><a href="/modules/perfiles/perfiles.html" class="nav-link">Gestionar Usuarios</a></li>
-                        <li class="nav-submenu"><a href="/modules/perfiles/roles.html" class="nav-link">Roles y Permisos</a></li>
+                        <li class="nav-submenu"><a href="/modules/perfiles/perfiles.html" class="nav-link">Gestionar Usuarios</a></li>
+                        <li class="sub-active"><a href="/modules/perfiles/roles.html" class="nav-link">Roles y Permisos</a></li>
                     </ul>
                 </li>
 
@@ -177,65 +175,106 @@
         </div>
 
     </aside>
-    
     <main class="main-content">
         <div class="title">
-            <p class="ubi">Módulos/Perfiles/Gestión Usuarios</p>
-            <h1 class="ubi-titulo">Usuarios</h1>
+            
+        <p>Módulos/Perfiles/Gestionar Roles</p>
+        <h1>Roles</h1>
+        
         </div>
         <div class="contenido">
-            
-                <div class="gestionar-titulo">
-                    <h2>Lista de Usuarios</h2>
+            <div class="titulo-roles">
+                <h2>Roles y Permisos</h2>
+            </div>
+            <div class="filtros">
+                <div class="buscar">
+                <input type="text" placeholder="Buscar rol" class="search-input">
+                <button class="search-button" type="button"><i class="fas fa-search"></i><span>Buscar</span></button>
                 </div>
-                <div class="filtros">
-                    <div class="buscar">
-                        <input type="text" placeholder="Buscar Usuarios" id="search-input">
-                        <button class="btn-buscar" type="button"><i class="fas fa-search"></i><span>Buscar</span></button>
-                    </div>
-
-                    <select name="roles" id="id-roles">
-                    <option value="">Todos los roles</option>
-                    <option value="administrador">Administrador</option>
-                    <option value="vendedor">Vendedor</option>
-                    </select>
-
+                <div class="estado">
+                    <span>Estado</span>
                     <select name="estado" id="id-estado">
-                        <option value="">Todos los estados</option>
-                        <option value="Activo">Activo</option>
+                        <option value="">Activo</option>
                         <option value="inactivo">Inactivo</option>
                     </select>
-                    
-                    <button class="btn-agregar-usuario">
-                            <i class="fas fa-plus"></i>
-                            <span>Agregar Usuario</span>
-                    </button>
-                    
                 </div>
-                <div class="tabla">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Nombre</th>
-                            <th>Usuario</th>
-                            <th>Email</th>
-                            <th>Rol</th>
-                            <th>Estado</th>
-                            <th>Último acceso</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
+                <button class="btn-agregar-rol">
+                            <i class="fas fa-plus"></i>
+                            <span>Agregar Rol</span>
+                </button>
+            </div>            
+            <div class="contenido-1">
+                <div class="role-card">
+                    <div class="role-header">
+                        <h3>Vendedor</h3>
+                        <span>Activo</span>
+                    </div>
+                    <div class="role-description">
+                        <p>Acceso a clientes, ventas y Reportes</p>
+                    </div>
+                    <div class="role-users">
+                        <i class="fa-solid fa-user-group"></i>
+                        <span>5 Usuarios</span>
+                        <div class="last-modified">
+                            <i class="fas fa-clock"></i>
+                            <span>Última modificación: hace 2 días</span>
+                        </div>
+                    </div>
+                    <div class="permissions-list">
+                        <div class="permission-item denied">
+                            <i class="fas fa-times"></i>
+                            <span>Perfiles</span>
+                        </div>
+                        <div class="permission-item allowed">
+                            <i class="fas fa-check"></i>
+                            <span>Clientes</span>
+                        </div>
+                        <div class="permission-item denied">
+                            <i class="fas fa-times"></i>
+                            <span>Inventario</span>
+                        </div>
+                        <div class="permission-item allowed">
+                            <i class="fas fa-check"></i>
+                            <span>Ventas</span>
+                        </div>
+                        <div class="permission-item denied">
+                            <i class="fas fa-times"></i>
+                            <span>Compras</span>
+                        </div>
+                        <div class="permission-item denied">
+                            <i class="fas fa-times"></i>
+                            <span>Documentos</span>
+                        </div>
+                        <div class="permission-item allowed">
+                            <i class="fas fa-check"></i>
+                            <span>Reportes</span>
+                        </div>
+                        <div class="permission-item denied">
+                            <i class="fas fa-times"></i>
+                            <span>Configuración</span>
+                        </div>
+                    </div>
+                    <div class="role-actions">
+                        <button class="btn-edit">
+                            <i class="fas fa-edit"></i>
+                            <span>Editar</span>
+                        </button>
+                        <button class="btn-delete">
+                            <i class="fa-solid fa-xmark"></i>
+                            <span>Eliminar</span>
+                        </button>
+                    </div>
+                </div>
             </div>
             
+
+
         </div>
+                
+        
+               
+       
     </main>
     
-
-    <div data-component="footer" data-app="store-admin"></div>
-    
-    <script src="../../js/sotore-admin.js"></script>
 </body>
 </html>
