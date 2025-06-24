@@ -21,9 +21,10 @@
     border-radius: 20px;
     width: 90%;
     max-width: 700px;
-    height: 95%;
+    max-height: 96vh;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     animation: modalSlideIn 0.3s ease-out;
+    overflow-y: auto;
 }
 
 @keyframes modalSlideIn {
@@ -59,7 +60,7 @@
 
 .close:hover,
 .close:focus {
-    color: var(--azul);
+    color: var(--rojo);
 }
 
 /*.modal-body */
@@ -74,7 +75,14 @@
 .modal-body-2 {
     padding: 0px 20px 20px 20px;
     color: var(--neutral-800);
-    max-height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    gap: 30px;
+}
+
+.modal-body-3 {
+    padding: 0px 20px 20px 20px;
+    color: var(--neutral-800);
     overflow-y: auto;
     display: flex;
     gap: 30px;
