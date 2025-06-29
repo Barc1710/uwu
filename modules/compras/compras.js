@@ -5,7 +5,7 @@
 //=========================================
 // Obtener elementos del modal
 const modalcompra = document.getElementById('modal-agregar-compra');
-const btnAgregarCompra = document.querySelector('.agregar-compra');
+const btnAgregarCompra = document.querySelector('#agregar-compra');
 const spanClosecompra = document.querySelector('#modal-agregar-compra .close');
 
 // Abrir modal cuando se hace clic en "Agregar compra"

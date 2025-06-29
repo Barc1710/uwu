@@ -3,7 +3,7 @@
 //=========================================
 // Obtener elementos del modal
 const modalproductos = document.getElementById('modal-agregar-producto');
-const btnAgregarProducto = document.querySelector('.agregar-producto');
+const btnAgregarProducto = document.querySelector('#agregar-producto');
 const spanCloseproductos = document.querySelector('#modal-agregar-producto .close');
 
 // Abrir modal cuando se hace clic en "Agregar Producto"

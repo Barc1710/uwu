@@ -7,29 +7,24 @@
     <link rel="stylesheet" href="../../css/modals.css">
     <link rel="stylesheet" href="inventario.css">
     <link rel="stylesheet" href="../../css/todolistas.css">
+    <link rel="icon" href="/shared/assets/favicon.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>uwu | Productos</title>
 </head>
 <body>
     <header>
-        
     </header>
 
     <aside class="sidebar">
         <div class="aside">
             <div class="aside-header">
-            <div class="logo-rol">
-                <a href="/modules/home/dashboard.html" class="logo">
-                    <img src="/shared/assets/favicon.svg" alt="">
-                    <p class="text-logo">uwuTech</p>
-                </a>
-                <div class="rol"><p>Administrador</p></div>
-            </div>
-            <div class="toggle">
-                <div class="toggle-button" id="toggle-button">
-                    <button><img src="/shared/assets/sidebar.svg" alt=""></button>
-                </div> 
-            </div>
+                <div class="logo-rol">
+                    <a href="/modules/home/dashboard.html" class="logo">
+                        <img src="/shared/assets/favicon.svg" alt="logouwutech">
+                        <p class="text-logo">uwuTech</p>
+                    </a>
+                    <div class="rol"><p>Administrador</p></div>
+                </div>
             </div>
             <nav class="sidebar-menu">
             
@@ -77,7 +72,7 @@
                 
                 <li class="nav-item">
                     <div class="modulo">
-                        <a href="/modules/inventario/inventario.html" class="nav-link">
+                        <a href="/modules/inventario/inventario.html" class="nav-link active-link">
                             <div>
                                 <i class="fas fa-box nav-icon"></i>
                                 <span>Inventario</span>
@@ -129,7 +124,7 @@
                     </ul>
                 </li>
 
-               <!-- <li class="nav-item">
+                <!-- <li class="nav-item">
                     <div class="modulo">
                         <a href="/modules/reports/reportes.html" class="nav-link">
                             <div>
@@ -168,7 +163,7 @@
 
 
         <div class="logout">
-                <a href="/modules/auth/logout.html" class="nav-link">
+                <a href="../../index.html" class="nav-link">
                     <div>
                         <i class="fas fa-sign-out-alt nav-icon"></i>
                         <span>Cerrar Sesión</span>
@@ -180,63 +175,43 @@
 
     <main class="main-content">
         <div class="title">
-            <p class="ubi">Módulos/Inventario/Productos</p>
+            <p class="ubi">Módulos / Inventario / Productos</p>
             <h1 class="title-ubi">Productos y Stock</h1>
         </div>
         <div class="content">
-            <div class="productos-header">
-                <div class="productos-title"><h2>Lista de Productos</h2></div>
-                <button class="agregar-producto" type="button"><i class="fas fa-plus"></i><span>Agregar Producto</span></button>
+            <div class="modulo-header">
+                <div class="modulo-title"><h2>Lista de Productos</h2></div>
+                <button class="btn-agregar" type="button" id="agregar-producto"><i class="fas fa-plus"></i><span>Agregar Producto</span></button>
             </div>
-            <div class="filtros">
+            <div class="buscar-filtros">
                 <div class="buscar">
                     <input type="text" placeholder="Buscar producto" id="search-input">
                     <button class="search-button" type="button"><i class="fas fa-search"></i><span>Buscar</span></button>
                 </div>
-                <select name="marca" id="marca">
-                    <option value="">Marca</option>
-                    <option value="Asus">ASUS</option>
-                    <option value="Samsung">SAMSUNG</option>
-                    <option value="Apple">APPLE</option>
-                    <option value="HP">HP</option>
-                    <option value="Dell">DELL</option>
-                    <option value="Lenovo">LENOVO</option>
-                    <option value="Acer">ACER</option>
-                    <option value="Xiaomi">XIAOMI</option>
-                    <option value="MSI">MSI</option>
-                    <option value="Logitech">LOGITECH</option>
-                    <option value="Razer">RAZER</option>
-                    <option value="nvidia">NVIDIA</option>
-                    <option value="AMD">AMD</option>
-                    <option value="Intel">INTEL</option>
-                    <option value="Kingston">KINGSTON</option>
-                </select>
-                <select name="categoria" id="categoria">
-                    <option value="">Categoría</option>
-                    <option value="laptop">Laptops</option>
-                    <option value="celular">Celulares</option>
-                    <option value="monitor">Monitores</option>
-                    <option value="teclado">Teclados</option>
-                    <option value="mouse">Mouse</option>
-                    <option value="audifonos">Audífonos</option>
-                    <option value="impresora">Impresoras</option>
-                    <option value="accesorios">Accesorios</option>
-                    <option value="componentes">Componentes</option>
-                    <option value="otros">Otros</option>
-                </select>
+                <div class="filtros">
+                    <select name="marca" id="marca">
+                        <option value="">Marca</option>
+                    </select>
+                    <select name="categoria" id="categoria">
+                        <option value="">Categoría</option>
+                        
+                    </select>
+    
+                    <select name="estado" id="estado">
+                        <option value="">Estado</option>
+                        <option value="disponible">Disponible</option>
+                        <option value="agotado">Agotado</option>
+                    </select>
+    
+                    <select name="ordenar" id="ordenar">
+                        <option value="">Ordenar por</option>
+                        <option value="nombre">Nombre</option>
+                        <option value="precio">Precio</option>
+                        <option value="stock">Stock</option>
+                    </select>
 
-                <select name="estado" id="estado">
-                    <option value="">Estado</option>
-                    <option value="disponible">Disponible</option>
-                    <option value="agotado">Agotado</option>
-                </select>
-
-                <select name="ordenar" id="ordenar">
-                    <option value="">Ordenar por</option>
-                    <option value="nombre">Nombre</option>
-                    <option value="precio">Precio</option>
-                    <option value="stock">Stock</option>
-                </select>
+                </div>
+                
 
             </div>
 
@@ -267,10 +242,10 @@
                             <td>15</td>
                             <td><span class="estado-disponible">Disponible</span></td>
                             <td class="acciones">
-                                <button class="btn-accion btn-ver" onclick="verProducto(1)">
+                                <button class="btn-accion btn-ver" onclick="verproducto(1)">
                                     <i class="fas fa-eye"></i>
                                 </button>
-                                <button class="btn-accion btn-editar" onclick="editarProducto(1)">
+                                <button class="btn-accion btn-editar" onclick="editarproducto(1)">
                                     <i class="fas fa-edit"></i>
                                 </button>
                                 <button class="btn-accion btn-eliminar" onclick="eliminarProducto(1)">
@@ -336,32 +311,12 @@
                             <label for="marca-product">Marca:</label>
                             <select name="marca-product" id="marca-product">
                                 <option value="">Seleccionar Marca</option>
-                                <option value="Asus">ASUS</option>
-                                <option value="Samsung">SAMSUNG</option>
-                                <option value="Apple">APPLE</option>
-                                <option value="HP">HP</option>
-                                <option value="Dell">DELL</option>
-                                <option value="Lenovo">LENOVO</option>
-                                <option value="Acer">ACER</option>
-                                <option value="Xiaomi">XIAOMI</option>
-                                <option value="MSI">MSI</option>
-                                <option value="Logitech">LOGITECH</option>
-                                <option value="Razer">RAZER</option>
                             </select>
                         </div>
                         <div class="campo-row">
                             <label for="categoria-product">Categoría:</label>
                             <select name="categoria-product" id="categoria-product">
                                 <option value="">Seleccionar Categoría</option>
-                                <option value="laptop">Laptops</option>
-                                <option value="celular">Celulares</option>
-                                <option value="monitor">Monitores</option>
-                                <option value="teclado">Teclados</option>
-                                <option value="mouse">Mouse</option>
-                                <option value="audifonos">Audífonos</option>
-                                <option value="impresora">Impresoras</option>
-                                <option value="accesorios">Accesorios</option>
-                                <option value="componentes">Componentes</option>
                                 <option value="otros">Otros</option>
                             </select>
                         </div>
@@ -379,7 +334,6 @@
                                     <option value="">Seleccionar Unidad</option>
                                     <option value="unidad">Unidad</option>
                                     <option value="kilogramo">Kit</option>
-                                    <option value="litro">Caja</option>
                                     <option value="metro">Otros</option>
                                 </select>
                             </div>

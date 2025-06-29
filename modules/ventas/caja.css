@@ -1,4 +1,3 @@
-
 .content{
     display: flex;
     align-items: flex-start;
@@ -39,21 +38,39 @@
 .apertura-form select,
 .apertura-form input[type="number"],
 .apertura-form input[type="date"],
-.apertura-form input[type="time"] {
+.apertura-form input[type="time"],
+.apertura-form textarea {
     width: 100%;
     height: 36px;
     padding: 8px 10px;
     border-radius:10px;
-    border: 1px solid var(--neutral-400, #AEAEB2);
+    border: 2px solid var(--neutral-400, #AEAEB2);
     background: var(--color-blanco, #FFF);
     font-size: 15px;
     box-sizing: border-box;
 }
 
+.apertura-form textarea {
+    height: auto;
+    min-height: 80px;
+    resize: vertical;
+}
+
 .apertura-form select:focus,
-.apertura-form input:focus {
+.apertura-form input:focus,
+.apertura-form textarea:focus {
     outline: none;
-    border-color: var(--azul)
+    border: 2px solid var(--azul)
+}
+
+.apertura-form input[readonly] {
+    background-color: var(--neutral-100, #F2F2F7);
+    color: var(--neutral-600, #8E8E93);
+    cursor: not-allowed;
+}
+
+.apertura-form input[readonly]:focus {
+    border: 2px solid var(--neutral-400, #AEAEB2);
 }
 
 .button{
@@ -76,6 +93,10 @@
     height: 36px;
 }
 
+.cierre-caja {
+    background: var(--rojo) !important;
+}
+
 .apertura-form button span {
     color: var(--color-blanco, #FFF);
     text-align: center;
@@ -91,6 +112,12 @@
 
 .apertura-form button:hover {
     background: var(--azul-hover);
+    cursor: pointer;
+}
+
+.cierre-caja:hover {
+    background: var(--rojo-hover) !important;
+    cursor: pointer;
 }
 
 .apertura-title h2,

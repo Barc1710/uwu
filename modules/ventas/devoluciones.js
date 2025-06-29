@@ -3,7 +3,7 @@
 //=========================================
 // Obtener elementos del modal
 const modaldevolucion = document.getElementById('modal-agregar-devolucion');
-const btnAgregarDevolucion = document.querySelector('.agregar-devolucion');
+const btnAgregarDevolucion = document.querySelector('#agregar-devolucion');
 const spanClosedevolucion = document.querySelector('#modal-agregar-devolucion .close');
 
 // Abrir modal cuando se hace clic en "Agregar compra"

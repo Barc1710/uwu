@@ -3,7 +3,7 @@
 //=========================================
 // Obtener elementos del modal
 const modalproveedor = document.getElementById('modal-agregar-proveedor');
-const btnAgregarprovedor = document.querySelector('.agregar-proveedor');
+const btnAgregarprovedor = document.querySelector('#agregar-proveedor');
 const spanCloseproveedor = document.querySelector('#modal-agregar-proveedor .close');
 
 // Abrir modal cuando se hace clic en "Agregar proveedor"

@@ -7,7 +7,7 @@
 //=========================================
 // Obtener elementos del modal
 const modalOferta = document.getElementById('modal-agregar-oferta');
-const btnAgregarOferta = document.querySelector('.agregar-oferta');
+const btnAgregarOferta = document.querySelector('#agregar-oferta');
 const spanCloseOferta = document.querySelector('#modal-agregar-oferta .close');
 
 // Abrir modal cuando se hace clic en "Agregar Oferta"

@@ -1,3 +1,7 @@
+/*-----------------------------------------
+------ASIDE STYLES-------------------------
+-------------------------------------------*/
+
 @import url(variables.css);
 
 * {
@@ -53,12 +57,13 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin: auto;
     text-decoration: none;
     gap: 12px;
 
 }
 
-.logo-rol img {
+.logo img {
     width: 35.714px;
     height: 35.714px;
     aspect-ratio: 35.71/35.71;
@@ -82,6 +87,7 @@ body {
     padding: auto;
     justify-content: center;
     align-items: center;
+    margin: auto;
     gap: 10px;
     border-radius: 50px;
     border: 1px solid var(--neutral-800);
@@ -96,7 +102,7 @@ body {
     font-weight: 500;
 }
 
-.toggle {
+/*.toggle {
     padding-top: 20px;
     display: flex;
     width: 88.163px;
@@ -110,6 +116,7 @@ body {
     justify-content: flex-end;
     align-items: center;
 }
+*/
 
 /* aside interno */
 
@@ -152,19 +159,35 @@ body {
 }
 
 .nav-link i, .nav-icon{
-    color: var(--neutral-800, #1C1C1E);
+    color: var(--neutral-500, #1C1C1E);
 }
 
 .nav-link span {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    color: var(--Neutral-800, #1C1C1E);
+    color: var(--neutral-500, #1C1C1E);
     text-overflow: ellipsis;
     font-family: Inter;
     font-size: var(--font-navegacion-b);
     font-style: normal;
     font-weight: 600;
+    line-height: normal;
+}
+
+.active-link i {
+    color: var(--neutral-800, #1C1C1E);
+}
+
+.active-link span {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    color: var(--neutral-800, #1C1C1E);
+    text-overflow: ellipsis;
+    font-size: var(--font-navegacion-b);
+    font-style: normal;
+    font-weight: bold;
     line-height: normal;
 }
 
@@ -215,27 +238,21 @@ body {
 
 .logout div {
     display: flex;
-    padding: 14px 16px;
+    padding: 12px 20px;
     justify-content: center;
     align-items: center;
     gap: 8px;
-    border-radius: 14px;
+    border-radius: 16px;
     background: var(--neutral-800, #1C1C1E);
 }
 
 .logout i{
-    width: 24px;
-    height: 24px;
-    aspect-ratio: 1/1;
     color: var(--color-blanco, #FFFFFF);
-    
-
 }
 
 .logout span {
     color: var(--color-blanco, #FFFFFF);
     text-align: center;
-
     font-family: Inter;
     font-size: 16px;
     font-style: normal;

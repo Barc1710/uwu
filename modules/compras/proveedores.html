@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../../css/todolistas.css">
     <link rel="stylesheet" href="compras.css">
     <link rel="stylesheet" href="../../css/modals.css">
+    <link rel="icon" href="/shared/assets/favicon.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>uwu | Ordenes de Compra</title>
 </head>
@@ -25,11 +26,11 @@
                 </a>
                 <div class="rol"><p>Administrador</p></div>
             </div>
-            <div class="toggle">
+            <!--<div class="toggle">
                 <div class="toggle-button" id="toggle-button">
                     <button><img src="/shared/assets/sidebar.svg" alt=""></button>
                 </div> 
-            </div>
+            </div>-->
             </div>
             <nav class="sidebar-menu">
             
@@ -113,7 +114,7 @@
                 
                 <li class="nav-item">
                     <div class="modulo">
-                        <a href="/modules/compras/compras.html" class="nav-link">
+                        <a href="/modules/compras/compras.html" class="nav-link active-link">
                             <div>
                                 <i class="fas fa-shopping-cart nav-icon"></i>
                                 <span>Compras</span>
@@ -168,7 +169,7 @@
 
 
         <div class="logout">
-                <a href="/modules/auth/logout.html" class="nav-link">
+                <a href="/./../index.html" class="nav-link">
                     <div>
                         <i class="fas fa-sign-out-alt nav-icon"></i>
                         <span>Cerrar Sesión</span>
@@ -180,33 +181,36 @@
 
     <main class="main-content">
         <div class="title">
-            <p class="ubi">Módulos/Compras/Proveedores</p>
+            <p class="ubi">Módulos / Compras / Proveedores</p>
             <h1 class="title-ubi">Proveedores</h1>
         </div>
         <div class="content">
-            <div class="proveedores-header">
-                <div class="proveedores-title"><h2>Lista de Proveedores</h2></div>
-                <button class="agregar-proveedor" type="button"><i class="fas fa-plus"></i><span>Nuevo Proveedor</span></button>
+            <div class="modulo-header">
+                <div class="modulo-title"><h2>Lista de Proveedores</h2></div>
+                <button class="btn-agregar" id="agregar-proveedor" type="button"><i class="fas fa-plus"></i><span>Nuevo Proveedor</span></button>
             </div>
-            <div class="filtros">
+            <div class="buscar-filtros">
                 <div class="buscar">
                     <input type="text" placeholder="Buscar proveedor" id="search-input">
                     <button class="search-button" type="button"><i class="fas fa-search"></i><span>Buscar</span></button>
                 </div>
-                
-                <select name="estado" id="estado">
-                    <option value="">Estado</option>
-                    <option value="disponible">Activo</option>
-                    <option value="inactivo">Inactivo</option>
-                    <option value="proximamente">Próximamente</option>
-                </select>
 
-                <select name="ordenar" id="ordenar">
-                    <option value="">Ordenar por</option>
-                    <option value="nombre">Nombre</option>
-                    <option value="precio">Precio</option>
-                    <option value="stock">Stock</option>
-                </select>
+                <div class="filtros">
+                    <select name="estado" id="estado">
+                        <option value="">Estado</option>
+                        <option value="disponible">Activo</option>
+                        <option value="inactivo">Inactivo</option>
+                        <option value="proximamente">Próximamente</option>
+                    </select>
+    
+                    <select name="ordenar" id="ordenar">
+                        <option value="">Ordenar por</option>
+                        <option value="nombre">Nombre</option>
+                        <option value="precio">Precio</option>
+                        <option value="stock">Stock</option>
+                    </select>
+                </div>
+                
 
             </div>
 
@@ -288,6 +292,10 @@
                             <div class="campo-colum">
                                 <label for="proveedor">Proveedor:</label>
                                 <input type="text" id="proveedor" placeholder="Proveedor">
+                            </div>
+                            <div class="campo-colum">
+                                <label for="razon">Razon Social:</label>
+                                <input type="text" id="razon" placeholder="~">
                             </div>
                             <div class="campo-colum">
                                 <label for="nombre-encargado">Nombre Encargado:</label>

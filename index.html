@@ -1,11 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>uwu | Login</title>
+    <link rel="icon" href="/shared/assets/favicon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/seguridad.css">
 </head>
 <body>
-    <a href="modules/home/dashboard.html"><p>ingresar</p></a>
+    <header class="cabezera">
+        <a href="#"><img src="/shared/assets/favicon.svg" alt="logito"></a>
+        <h1>Iniciar Sesión</h1>
+    </header>
+
+    <main>
+        <div class="login-container">
+            <div class="login-header">
+                <p>Por favor, ingresa tus credenciales para continuar.</p>
+            </div>
+            <form id="loginForm" action="#" method="POST">
+                <div class="campo-colum">
+                    <label for="usuario">Usuario</label>
+                    <input type="text" id="usuario" name="usuario" placeholder="Ingresa tu usuario">
+                </div>
+    
+                <div class="campo-colum">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña">
+                </div>
+            </form>
+
+            <!--Por ahora-->
+            <div class="boton">
+                <a href="/modules/ventas/ventas.html">
+                    <button class="btn-azul" id="ingresar">
+                        <i class="fas fa-right-to-bracket"></i>
+                        <span>Iniciar Sesión</span>
+                    </button>
+                </a>
+            </div>
+    
+            <div class="recuperar">
+                <a href="/index.html">¿Olvidaste tu contraseña?</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+    </footer>
 </body>
 </html>

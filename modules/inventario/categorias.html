@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../../css/todolistas.css">
     <link rel="stylesheet" href="../../css/modals.css">
     <link rel="stylesheet" href="inventario.css">
+    <link rel="icon" href="/shared/assets/favicon.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>uwu | Categorías</title>
 </head>
@@ -25,11 +26,11 @@
                 </a>
                 <div class="rol"><p>Administrador</p></div>
             </div>
-            <div class="toggle">
+            <!--<div class="toggle">
                 <div class="toggle-button" id="toggle-button">
                     <button><img src="/shared/assets/sidebar.svg" alt=""></button>
                 </div> 
-            </div>
+            </div>-->
             </div>
             <nav class="sidebar-menu">
             
@@ -77,7 +78,7 @@
                 
                 <li class="nav-item">
                     <div class="modulo">
-                        <a href="/modules/inventario/inventario.html" class="nav-link">
+                        <a href="/modules/inventario/inventario.html" class="nav-link active-link">
                             <div>
                                 <i class="fas fa-box nav-icon"></i>
                                 <span>Inventario</span>
@@ -168,7 +169,7 @@
 
 
         <div class="logout">
-                <a href="/modules/auth/logout.html" class="nav-link">
+                <a href="../../index.html" class="nav-link">
                     <div>
                         <i class="fas fa-sign-out-alt nav-icon"></i>
                         <span>Cerrar Sesión</span>
@@ -185,22 +186,25 @@
         </div>
 
         <div class="content">
-            <div class="categorias-header">
-                <div class="categorias-title"><h2>Categorias</h2></div>
-                <button class="agregar-categoria" type="button"><i class="fas fa-plus"></i><span>Agregar Categoria</span></button>
+            <div class="modulo-header">
+                <div class="modulo-title"><h2>Categorías</h2></div>
+                <button class="btn-agregar" id="agregar-categoria" type="button"><i class="fas fa-plus"></i><span>Agregar Categoria</span></button>
             </div>
-            <div class="filtros">
+            <div class="buscar-filtros">
                 <div class="buscar">
-                    <input type="text" placeholder="Buscar categoria" id="search-input">
+                    <input type="text" placeholder="Buscar categoria ..." id="search-input">
                     <button class="search-button" type="button"><i class="fas fa-search"></i><span>Buscar</span></button>
                 </div>
 
-                <select name="ordenar" id="ordenar">
-                    <option value="">Ordenar por</option>
-                    <option value="nombre">Nombre</option>
-                    <option value="precio">Precio</option>
-                    <option value="stock">Stock</option>
-                </select>
+                <div class="filtros">
+                    <select name="ordenar" id="ordenar">
+                        <option value="">Ordenar por</option>
+                        <option value="nombre">Nombre</option>
+                        <option value="precio">Precio</option>
+                        <option value="stock">Stock</option>
+                    </select>
+                </div>
+                
 
             </div>
 
@@ -257,22 +261,27 @@
         </div>
 
         <div class="content">
-            <div class="marcas-header">
-                <div class="marcas-title"><h2>Marcas</h2></div>
-                <button class="agregar-marca" type="button"><i class="fas fa-plus"></i><span>Agregar Marca</span></button>
+            <div class="modulo-header">
+                <div class="modulo-title"><h2>Marcas</h2></div>
+                <button class="btn-agregar" id="agregar-marca" type="button"><i class="fas fa-plus"></i><span>Agregar Marca</span></button>
             </div>
-            <div class="filtros">
+            <div class="buscar-filtros">
                 <div class="buscar">
-                    <input type="text" placeholder="Buscar marca" id="search-input">
+                    <input type="text" placeholder="Buscar marca ..." id="search-input">
                     <button class="search-button" type="button"><i class="fas fa-search"></i><span>Buscar</span></button>
                 </div>
 
-                <select name="ordenar" id="ordenar">
-                    <option value="">Ordenar por</option>
-                    <option value="nombre">Nombre</option>
-                    <option value="precio">Precio</option>
-                    <option value="stock">Stock</option>
-                </select>
+                <div class="filtros">
+                    <select name="ordenar" id="ordenar">
+                        <option value="">Ordenar por</option>
+                        <option value="nombre">Nombre</option>
+                        <option value="precio">Precio</option>
+                        <option value="stock">Stock</option>
+                    </select>
+
+                </div>
+
+                
 
             </div>
 
@@ -297,10 +306,10 @@
                             <td>20</td>
                             <td>10/06/2025</td>
                             <td class="acciones">
-                                <button class="btn-accion btn-editar" onclick="editarCategoria(1)">
+                                <button class="btn-accion btn-editar" onclick="editarmarca(1)">
                                     <i class="fas fa-edit"></i>
                                 </button>
-                                <button class="btn-accion btn-eliminar" onclick="eliminarCategoria(1)">
+                                <button class="btn-accion btn-eliminar" onclick="eliminarmarca(1)">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </td>
@@ -406,6 +415,6 @@
     <div data-component="footer" data-app="store-admin"></div>
     <script src="../../js/sotore-admin.js"></script>
     <script src="inventario.js"></script>
-    <script src="categoria.js"></script>
+    <script src="categorias.js"></script>
 </body>
 </html>

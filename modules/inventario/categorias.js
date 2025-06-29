@@ -3,7 +3,7 @@
 //=========================================
 // Obtener elementos del modal
 const modalCategoria = document.getElementById('modal-agregar-categoria');
-const btnAgregarCategoria = document.querySelector('.agregar-categoria');
+const btnAgregarCategoria = document.querySelector('#agregar-categoria');
 const spanCloseCategoria = document.querySelector('#modal-agregar-categoria .close');
 
 // Abrir modal cuando se hace clic en "Agregar Oferta"
@@ -40,7 +40,7 @@ document.addEventListener('keydown', function(event) {
 //=========================================
 // Obtener elementos del modal
 const modalMarca = document.getElementById('modal-agregar-marca');
-const btnAgregarMarca = document.querySelector('.agregar-marca');
+const btnAgregarMarca = document.querySelector('#agregar-marca');
 const spanCloseMarca = document.querySelector('#modal-agregar-marca .close');
 
 // Abrir modal cuando se hace clic en "Agregar Marca"

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/styles.css">
     <link rel="stylesheet" href="../../css/todolistas.css">
-    <link rel="stylesheet" href="inventario.css">
+    <link rel="icon" href="/shared/assets/favicon.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>uwu | Historial</title>
 </head>
@@ -24,11 +24,11 @@
                 </a>
                 <div class="rol"><p>Administrador</p></div>
             </div>
-            <div class="toggle">
+            <!--<div class="toggle">
                 <div class="toggle-button" id="toggle-button">
                     <button><img src="/shared/assets/sidebar.svg" alt=""></button>
                 </div> 
-            </div>
+            </div>-->
             </div>
             <nav class="sidebar-menu">
             
@@ -93,7 +93,7 @@
                 
                 <li class="nav-item">
                     <div class="modulo">
-                        <a href="/modules/ventas/ventas.html" class="nav-link">
+                        <a href="/modules/ventas/ventas.html" class="nav-link active-link">
                             <div>
                                 <i class="fa-solid fa-circle-dollar-to-slot nav-icon"></i>
                                 <span>Ventas</span>
@@ -167,7 +167,7 @@
 
 
         <div class="logout">
-                <a href="/modules/auth/logout.html" class="nav-link">
+                <a href="../../index.html" class="nav-link">
                     <div>
                         <i class="fas fa-sign-out-alt nav-icon"></i>
                         <span>Cerrar Sesión</span>
@@ -179,46 +179,52 @@
 
     <main class="main-content">
         <div class="title">
-            <p class="ubi">Módulos/Ventas/Historial</p>
+            <p class="ubi">Módulos / Ventas / Historial</p>
             <h1 class="title-ubi">Historial de Ventas </h1>
         </div>
         <div class="content">
-            <div class="historial-header">
-                <div class="historial-title"><h2>Lista de Ventas</h2></div>
-
-                <div class="filtros-header">
-                    <button class="aplicar" type="button"><i class="fas fa-check"></i><span>Aplicar</span></button>
+            <div class="modulo-header">
+                <div class="modulo-title"><h2>Lista de Ventas</h2></div>
+                <div class="apli-filtros">
+                    <!--<button class="aplicar" type="button"><i class="fas fa-check"></i><span>Aplicar</span></button>-->
                     <button class="limpiar" type="button"><i class="fas fa-times"></i><span>Limpiar</span></button>
                 </div>
                 
 
             </div>
-            <div class="filtros">
+            <div class="buscar-filtros">
                 <div class="buscar">
                     <input type="text" placeholder="Buscar venta" id="search-input">
                     <button class="search-button" type="button"><i class="fas fa-search"></i><span>Buscar</span></button>
                 </div>
 
-                <div class="fecha">
-                    <label for="fecha-inicio">Fecha Inicio:</label>
-                    <input type="date" id="fecha-inicio" name="fecha-inicio">
+                <div class="filtros">
+                    <div class="fecha">
+                        <label for="fecha-inicio">Fecha Inicio:</label>
+                        <input type="date" id="fecha-inicio" name="fecha-inicio">
+                    </div>
+    
+                    <div class="fecha">
+                        <label for="fecha-fin">Fecha Fin:</label>
+                        <input type="date" id="fecha-fin" name="fecha-fin">
+                    </div>
+    
+                    <select name="metodo" id="metodo">
+                        <option value="">Met. de Pago</option>
+                        <option value="">Efectivo </option>
+                        <option value="tarjeta">Tarjeta</option>
+                        <option value="transferencia">Transferencia</option>
+                    </select>
+    
+                    <select name="tipo" id="tipo">
+                        <option value="">Comprobante</option>
+                        <option value="">Boleta</option>
+                        <option value="factura">Factura</option>
+                    </select>
+
+                    
                 </div>
-
-                <div class="fecha">
-                    <label for="fecha-fin">Fecha Fin:</label>
-                    <input type="date" id="fecha-fin" name="fecha-fin">
-                </div>
-
-                <select name="metodo" id="metodo">
-                    <option value="">Efectivo </option>
-                    <option value="tarjeta">Tarjeta</option>
-                    <option value="transferencia">Transferencia</option>
-                </select>
-
-                <select name="tipo" id="tipo">
-                    <option value="">Boleta</option>
-                    <option value="factura">Factura</option>
-                </select>
+                
 
             </div>
 
@@ -249,7 +255,7 @@
                             <td>Efectivo</td>
                             <td>Boleta</td>
                             <td>07/06/2025</td>
-                            <td><span class="estado-pendiente">Completa</span></td>
+                            <td><span class="estado-completo">Completa</span></td>
                             <td class="acciones">
                                 <button class="btn-accion btn-ver" onclick="verventa(1)">
                                     <i class="fas fa-eye"></i>

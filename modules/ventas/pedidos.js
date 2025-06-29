@@ -3,7 +3,7 @@
 //=========================================
 // Obtener elementos del modal
 const modalpedido = document.getElementById('modal-agregar-pedido');
-const btnAgregarPedido = document.querySelector('.agregar-pedido');
+const btnAgregarPedido = document.querySelector('#agregar-pedido');
 const spanClosepedido = document.querySelector('#modal-agregar-pedido .close');
 
 // Abrir modal cuando se hace clic en "Agregar compra"
