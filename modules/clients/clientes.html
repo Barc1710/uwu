@@ -12,13 +12,19 @@
     <title>uwu | Usuarios</title>
 </head>
 <body>
-    <header>
-    </header>
+    <header></header>
+    
     <aside class="sidebar">
 
         <div class="aside">
             <div class="aside-header">
-            
+            <div class="logo-rol">
+                <a href="/modules/home/dashboard.html" class="logo">
+                    <img src="/shared/assets/favicon.svg" alt="">
+                    <p class="text-logo">uwuTech</p>
+                </a>
+                <div class="rol"><p>Administrador</p></div>
+            </div>
             <div class="toggle">
                 <div class="toggle-button" id="toggle-button">
                     <button><img src="/shared/assets/sidebar.svg" alt=""></button>
@@ -176,48 +182,69 @@
             <p class="ubi">Módulos/Clientes</p>
             <h1 class="ubi-titulo">Usuarios</h1>
         </div>
+        
         <div class="contenido">
-            
-                <div class="gestionar-titulo">
-                    <h2>Lista de Clientes</h2>
-                </div>
-                <div class="filtros">
-                    <div class="buscar">
-                        <input type="text" placeholder="Buscar Usuarios" id="search-input">
-                        <button class="btn-buscar" type="button"><i class="fas fa-search"></i><span>Buscar</span></button>
-                    </div>
-
-                    
-                    
-                    <button class="btn-agregar-usuario">
-                            <i class="fas fa-plus"></i>
-                            <span>Agregar Cliente</span>
-                    </button>
-                    
-                </div>
-                <div class="tabla">
-                <table id="clientesTable">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Nombre</th>
-                            <th>Usuario</th>
-                            <th>Email</th>
-                            
-                            <th>Estado</th>
-                            <th>Último acceso</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="clientesTableBody">
-                        <!-- Los datos se cargarán dinámicamente -->
-                    </tbody>
-                </table>
+            <div class="gestionar-titulo">
+                <h2>Lista de Clientes</h2>
             </div>
             
+            <div class="filtros">
+                <div class="buscar">
+                    <input type="text" placeholder="Buscar Usuarios" id="search-input">
+                    <button class="btn-buscar" type="button">
+                        <i class="fas fa-search"></i>
+                        <span>Buscar</span>
+                    </button>
+                </div>
+                
+                <button class="btn-agregar-usuario">
+                    <i class="fas fa-plus"></i>
+                    <span>Agregar Cliente</span>
+                </button>
+            </div>
+            
+            <div class="tabla-container1">
+                <div class="tabla">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nombre</th>
+                                <th>Usuario</th>
+                                <th>Email</th>
+                                <th>Estado</th>
+                                <th>Último acceso</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="clientesTableBody">
+                            <!-- Los datos se cargarán dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="pagination-container">
+                    <div class="pagination">
+                        <button class="pagination-btn prev-btn" disabled>
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="pagination-numbers">
+                            <button class="pagination-number active">1</button>
+                            <button class="pagination-number">2</button>
+                            <button class="pagination-number">3</button>
+                            <span class="pagination-dots">...</span>
+                            <button class="pagination-number">9</button>
+                        </div>
+                        <button class="pagination-btn next-btn">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
     
+    <!-- Modales -->
     <!-- Modal Nuevo Cliente -->
     <div id="modalAgregarUsuario" class="modal-overlay">
         <div class="modal-content-nuevo">
@@ -256,43 +283,43 @@
                         
                         <div class="form-group-nuevo">
                             <label for="numeroDocumento">Número de Documento</label>
-                            <input type="text" id="numeroDocumento" name="numeroDocumento" placeholder="">
+                            <input type="text" id="numeroDocumento" name="numeroDocumento">
                         </div>
                     </div>
                     
                     <div class="form-row-dos">
                         <div class="form-group-nuevo">
                             <label for="nombres">Nombres (Persona Natural)</label>
-                            <input type="text" id="nombres" name="nombres" placeholder="">
+                            <input type="text" id="nombres" name="nombres">
                         </div>
                         
                         <div class="form-group-nuevo">
                             <label for="apellidos">Apellidos (Persona Natural)</label>
-                            <input type="text" id="apellidos" name="apellidos" placeholder="">
+                            <input type="text" id="apellidos" name="apellidos">
                         </div>
                     </div>
                     
                     <div class="form-row-dos">
                         <div class="form-group-nuevo">
                             <label for="razonSocial">Razón Social</label>
-                            <input type="text" id="razonSocial" name="razonSocial" placeholder="">
+                            <input type="text" id="razonSocial" name="razonSocial">
                         </div>
                         
                         <div class="form-group-nuevo">
                             <label for="email">Correo Electrónico</label>
-                            <input type="email" id="email" name="email" placeholder="">
+                            <input type="email" id="email" name="email">
                         </div>
                     </div>
                     
                     <div class="form-row-dos">
                         <div class="form-group-nuevo">
                             <label for="telefono">Teléfono</label>
-                            <input type="tel" id="telefono" name="telefono" placeholder="">
+                            <input type="tel" id="telefono" name="telefono">
                         </div>
                         
                         <div class="form-group-nuevo">
                             <label for="fechaNacimiento">Fecha de Nacimiento</label>
-                            <input type="date" id="fechaNacimiento" name="fechaNacimiento" placeholder="">
+                            <input type="date" id="fechaNacimiento" name="fechaNacimiento">
                         </div>
                     </div>
                     
@@ -300,7 +327,7 @@
                         <div class="form-group-nuevo">
                             <label for="genero">Género:</label>
                             <select id="genero" name="genero">
-                                <option value="" disabled selected>M</option>
+                                <option value="" disabled selected>Seleccionar</option>
                                 <option value="masculino">Masculino</option>
                                 <option value="femenino">Femenino</option>
                                 <option value="otro">Otro</option>
@@ -310,7 +337,7 @@
                         <div class="form-group-nuevo">
                             <label for="estadoCivil">Estado Civil:</label>
                             <select id="estadoCivil" name="estadoCivil">
-                                <option value="" disabled selected>S</option>
+                                <option value="" disabled selected>Seleccionar</option>
                                 <option value="soltero">Soltero</option>
                                 <option value="casado">Casado</option>
                                 <option value="divorciado">Divorciado</option>
@@ -322,13 +349,14 @@
             </div>
             
             <div class="modal-footer-nuevo">
-                <button type="button" class="btn-cancelar-nuevo" id="btnCancelarUsuario">
-                    <i class="fas fa-times"></i>
-                    Cancelar
-                </button>
+                
                 <button type="button" class="btn-agregar-nuevo" id="btnAgregarUsuario">
                     <i class="fas fa-plus"></i>
                     Agregar
+                </button>
+                <button type="button" class="btn-cancelar-nuevo" id="btnCancelarUsuario">
+                    <i class="fas fa-times"></i>
+                    Cancelar
                 </button>
             </div>
         </div>
@@ -372,43 +400,43 @@
                         
                         <div class="form-group-nuevo">
                             <label for="editNumeroDocumento">Número de Documento</label>
-                            <input type="text" id="editNumeroDocumento" name="editNumeroDocumento" placeholder="">
+                            <input type="text" id="editNumeroDocumento" name="editNumeroDocumento">
                         </div>
                     </div>
                     
                     <div class="form-row-dos">
                         <div class="form-group-nuevo">
                             <label for="editNombres">Nombres (Persona Natural)</label>
-                            <input type="text" id="editNombres" name="editNombres" placeholder="">
+                            <input type="text" id="editNombres" name="editNombres">
                         </div>
                         
                         <div class="form-group-nuevo">
                             <label for="editApellidos">Apellidos (Persona Natural)</label>
-                            <input type="text" id="editApellidos" name="editApellidos" placeholder="">
+                            <input type="text" id="editApellidos" name="editApellidos">
                         </div>
                     </div>
                     
                     <div class="form-row-dos">
                         <div class="form-group-nuevo">
                             <label for="editRazonSocial">Razón Social</label>
-                            <input type="text" id="editRazonSocial" name="editRazonSocial" placeholder="">
+                            <input type="text" id="editRazonSocial" name="editRazonSocial">
                         </div>
                         
                         <div class="form-group-nuevo">
                             <label for="editEmail">Correo Electrónico</label>
-                            <input type="email" id="editEmail" name="editEmail" placeholder="">
+                            <input type="email" id="editEmail" name="editEmail">
                         </div>
                     </div>
                     
                     <div class="form-row-dos">
                         <div class="form-group-nuevo">
                             <label for="editTelefono">Teléfono</label>
-                            <input type="tel" id="editTelefono" name="editTelefono" placeholder="">
+                            <input type="tel" id="editTelefono" name="editTelefono">
                         </div>
                         
                         <div class="form-group-nuevo">
                             <label for="editFechaNacimiento">Fecha de Nacimiento</label>
-                            <input type="date" id="editFechaNacimiento" name="editFechaNacimiento" placeholder="">
+                            <input type="date" id="editFechaNacimiento" name="editFechaNacimiento">
                         </div>
                     </div>
                     
@@ -438,13 +466,128 @@
             </div>
             
             <div class="modal-footer-nuevo">
+                
+                <button type="button" class="btn-agregar-nuevo" id="btnGuardarEditarUsuario">
+                    <i class="fas fa-save"></i>
+                    Guardar Cambios
+                </button>
                 <button type="button" class="btn-cancelar-nuevo" id="btnCancelarEditarUsuario">
                     <i class="fas fa-times"></i>
                     Cancelar
                 </button>
-                <button type="button" class="btn-agregar-nuevo" id="btnGuardarEditarUsuario">
-                    <i class="fas fa-save"></i>
-                    Guardar Cambios
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Visualizar Cliente -->
+    <div id="modalVisualizarUsuario" class="modal-overlay">
+        <div class="modal-content-nuevo">
+            <div class="modal-header-nuevo">
+                <h2>Detalles del Cliente</h2>
+                <button class="modal-close-nuevo" id="closeModalVisualizarUsuario">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body-nuevo">
+                <div class="seccion-principal">
+                    <h3>Datos Principales</h3>
+                    
+                    <div class="form-row-tres">
+                        <div class="form-group-nuevo">
+                            <label>Tipo de Cliente</label>
+                            <div class="info-field" id="viewTipoCliente">-</div>
+                        </div>
+                        
+                        <div class="form-group-nuevo">
+                            <label>Tipo de Documento</label>
+                            <div class="info-field" id="viewTipoDocumento">-</div>
+                        </div>
+                        
+                        <div class="form-group-nuevo">
+                            <label>Número de Documento</label>
+                            <div class="info-field" id="viewNumeroDocumento">-</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row-dos">
+                        <div class="form-group-nuevo">
+                            <label>Nombres</label>
+                            <div class="info-field" id="viewNombres">-</div>
+                        </div>
+                        
+                        <div class="form-group-nuevo">
+                            <label>Apellidos</label>
+                            <div class="info-field" id="viewApellidos">-</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row-dos">
+                        <div class="form-group-nuevo">
+                            <label>Razón Social</label>
+                            <div class="info-field" id="viewRazonSocial">-</div>
+                        </div>
+                        
+                        <div class="form-group-nuevo">
+                            <label>Correo Electrónico</label>
+                            <div class="info-field" id="viewEmail">-</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row-dos">
+                        <div class="form-group-nuevo">
+                            <label>Teléfono</label>
+                            <div class="info-field" id="viewTelefono">-</div>
+                        </div>
+                        
+                        <div class="form-group-nuevo">
+                            <label>Fecha de Nacimiento</label>
+                            <div class="info-field" id="viewFechaNacimiento">-</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row-dos">
+                        <div class="form-group-nuevo">
+                            <label>Género</label>
+                            <div class="info-field" id="viewGenero">-</div>
+                        </div>
+                        
+                        <div class="form-group-nuevo">
+                            <label>Estado Civil</label>
+                            <div class="info-field" id="viewEstadoCivil">-</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row-dos">
+                        <div class="form-group-nuevo">
+                            <label>Estado</label>
+                            <div class="info-field" id="viewEstado">-</div>
+                        </div>
+                        
+                        <div class="form-group-nuevo">
+                            <label>Último Acceso</label>
+                            <div class="info-field" id="viewUltimoAcceso">-</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row-uno">
+                        <div class="form-group-nuevo">
+                            <label>Fecha de Registro</label>
+                            <div class="info-field" id="viewFechaRegistro">-</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer-nuevo">
+                
+                <button type="button" class="btn-agregar-nuevo" id="btnEditarDesdeVisualizar">
+                    <i class="fas fa-edit"></i>
+                    Editar Cliente
+                </button>
+                <button type="button" class="btn-cancelar-nuevo" id="btnCerrarVisualizarUsuario">
+                    <i class="fas fa-times"></i>
+                    Cerrar
                 </button>
             </div>
         </div>

@@ -212,7 +212,8 @@
                     </button>
                     
                 </div>
-                <div class="tabla">
+                <div class="tabla-container1">
+                    <div class="tabla">
                 <table>
                     <thead>
                         <tr>
@@ -226,8 +227,12 @@
                             <th>Acciones</th>
                         </tr>
                     </thead>
+                    <tbody id="tabla-usuarios">
+                        <!-- Los usuarios se cargarán aquí dinámicamente -->
+                    </tbody>
                 </table>
             </div>
+                </div>
             
         </div>
     </main>
@@ -357,10 +362,147 @@
             </div>
             
             <div class="modal-footer">
-                <button type="button" class="btn-cancel" id="btnCancelarUsuario">Cancelar</button>
                 <button type="button" class="btn-save" id="btnAgregarUsuario">
                     <i class="fas fa-plus"></i>
                     Agregar
+                </button>
+                <button type="button" class="btn-cancel" id="btnCancelarUsuario">
+                    <i class="fas fa-times"></i>
+                    Cancelar</button>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Editar Usuario -->
+    <div id="modalEditarUsuario" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Editar Usuario</h2>
+                <span class="modal-close" id="closeModalEditarUsuario">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="form-sections">
+                    <!-- Datos Personales -->
+                    <div class="form-section">
+                        <h3>Datos Personales</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="editNombres">Nombres:</label>
+                                <input type="text" id="editNombres" name="editNombres" placeholder="Ingrese los nombres">
+                            </div>
+                            <div class="form-group">
+                                <label for="editApellidos">Apellidos:</label>
+                                <input type="text" id="editApellidos" name="editApellidos" placeholder="Ingrese los apellidos">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="editDni">DNI:</label>
+                                <input type="text" id="editDni" name="editDni" placeholder="8 dígitos" maxlength="8">
+                            </div>
+                            <div class="form-group">
+                                <label for="editFechaNacimiento">Fecha de Nacimiento:</label>
+                                <input type="date" id="editFechaNacimiento" name="editFechaNacimiento">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="editGenero">Género:</label>
+                                <select id="editGenero" name="editGenero">
+                                    <option value="" disabled selected>Seleccionar</option>
+                                    <option value="masculino">Masculino</option>
+                                    <option value="femenino">Femenino</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="editEstadoCivil">Estado Civil:</label>
+                                <select id="editEstadoCivil" name="editEstadoCivil">
+                                    <option value="" disabled selected>Seleccionar</option>
+                                    <option value="soltero">Soltero</option>
+                                    <option value="casado">Casado</option>
+                                    <option value="divorciado">Divorciado</option>
+                                    <option value="viudo">Viudo</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contacto -->
+                    <div class="form-section">
+                        <h3>Contacto:</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="editTelefono">Teléfono:</label>
+                                <input type="tel" id="editTelefono" name="editTelefono" placeholder="Número de teléfono">
+                            </div>
+                            <div class="form-group">
+                                <label for="editEmail">Email:</label>
+                                <input type="email" id="editEmail" name="editEmail" placeholder="Correo electrónico">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Información Laboral -->
+                    <div class="form-section">
+                        <h3>Información Laboral:</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="editUsuario">Usuario:</label>
+                                <input type="text" id="editUsuario" name="editUsuario" placeholder="Nombre de usuario">
+                            </div>
+                            <div class="form-group">
+                                <label for="editFechaIngreso">Fecha de Ingreso:</label>
+                                <input type="date" id="editFechaIngreso" name="editFechaIngreso">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="editRol">Rol:</label>
+                                <select id="editRol" name="editRol">
+                                    <option value="" disabled selected>Seleccionar</option>
+                                    <option value="administrador">Administrador</option>
+                                    <option value="vendedor">Vendedor</option>
+                                    <option value="almacenero">Almacenero</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="editEstado">Estado:</label>
+                                <select id="editEstado" name="editEstado">
+                                    <option value="Activo">Activo</option>
+                                    <option value="Inactivo">Inactivo</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row image-upload-section">
+                            <div class="upload-container">
+                                <div class="upload-box" id="editPerfilUpload">
+                                    <i class="fas fa-user-circle"></i>
+                                    <span>Perfil</span>
+                                </div>
+                                <input type="file" id="editPerfilImage" accept="image/*" style="display: none;">
+                            </div>
+                            <div class="upload-container">
+                                <div class="upload-box" id="editImagenUpload">
+                                    <i class="fas fa-upload"></i>
+                                    <span>Subir Imagen</span>
+                                </div>
+                                <input type="file" id="editUserImage" accept="image/*" style="display: none;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn-save" id="btnActualizarUsuario">
+                    <i class="fas fa-save"></i>
+                    Actualizar
+                </button>
+                <button type="button" class="btn-cancel" id="btnCancelarEditar">
+                    <i class="fas fa-times"></i>
+                    Cancelar
                 </button>
             </div>
         </div>
