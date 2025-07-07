@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="../../css/styles.css">
     <link rel="stylesheet" href="../../css/todolistas.css">
     <link rel="stylesheet" href="../../css/modals.css">
-    <link rel="stylesheet" href="inventario.css">
     <link rel="icon" href="/shared/assets/favicon.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>uwu | Categorías</title>
@@ -211,8 +210,7 @@
             <div class="table">
                 <table>
                     <thead>
-                        <tr>
-                            <th>#</th>
+                        <tr> 
                             <th>Código</th>
                             <th>Nombre</th>
                             <th>Descripción</th>
@@ -223,22 +221,6 @@
                     </thead>
                     <tbody id="categoria-list">
                         <!-- Aquí se cargarán los productos dinámicamente -->
-                        <tr>
-                            <td>1</td>
-                            <td>MS-001</td>
-                            <td>Smartphones</td>
-                            <td>Teléfonos inteligentes</td>
-                            <td>20</td>
-                            <td>10/06/2025</td>
-                            <td class="acciones">
-                                <button class="btn-accion btn-editar" onclick="editarcategoria(1)">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                                <button class="btn-accion btn-eliminar" onclick="eliminarcategoria(1)">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </td>
-                        </tr>
                         
                     </tbody>
                 </table>
@@ -289,7 +271,6 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>#</th>
                             <th>Código</th>
                             <th>Nombre</th>
                             <th>N° de Productos</th>
@@ -299,21 +280,6 @@
                     </thead>
                     <tbody id="marca-list">
                         <!-- Aquí se cargarán los productos dinámicamente -->
-                        <tr>
-                            <td>1</td>
-                            <td>MS-001</td>
-                            <td>Samsung</td>
-                            <td>20</td>
-                            <td>10/06/2025</td>
-                            <td class="acciones">
-                                <button class="btn-accion btn-editar" onclick="editarmarca(1)">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                                <button class="btn-accion btn-eliminar" onclick="eliminarmarca(1)">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </td>
-                        </tr>
                         
                     </tbody>
                 </table>
@@ -344,32 +310,34 @@
                     <span class="close">&times;</span>
                 </div>
                 <div class="modal-body-1">
-                    <div class="body-derecha">
-                        <div class="derecha-superior">
-                            <div class="campo-colum">
-                                <label for="cod-categoria">Código de Categoría:</label>
-                                <input type="text" id="cod-categoria" placeholder="CA-02" disabled>
+                    <form id="form-categoria">
+                        <div class="body-derecha">
+                            <div class="derecha-superior">
+                                <div class="campo-colum">
+                                    <label for="cod-categoria">Código de Categoría:</label>
+                                    <input type="text" id="cod-categoria"  disabled>
+                                </div>
+        
+                                <div class="campo-colum">
+                                    <label for="nombre-categoria">Nombre:</label>
+                                    <input type="text" id="nombre-categoria" placeholder="Nombre de la Categoría">
+                                </div>
+        
+                                <div class="campo-colum">
+                                    <label for="descripcion-categoria">Descripcion:
+                                    </label>
+                                    <textarea id="descripcion-categoria" placeholder="Descripción de la Categoría"></textarea>
+                                </div>
                             </div>
-    
-                            <div class="campo-colum">
-                                <label for="nombre-categoria">Nombre:</label>
-                                <input type="text" id="nombre-categoria" placeholder="Nombre de la Categoría">
-                            </div>
-    
-                            <div class="campo-colum">
-                                <label for="descripcion-categoria">Descripcion:
-                                </label>
-                                <textarea id="descripcion-categoria" placeholder="Descripción de la Categoría"></textarea>
-                            </div>
+        
+                            <div class="botones">
+                                <button class="btn-modal-azul" id="guardar-categoria"><i class="fas fa-save"></i><span>Guardar</span></button>
+                                <button class="btn-modal-blanco" id="cancelar-categoria"><i class="fas fa-times"></i><span>Cancelar</span></button>
+                            </div> 
                         </div>
-    
-                        <div class="botones">
-                            <button class="btn-modal-azul" id="guardar-categoria"><i class="fas fa-save"></i><span>Guardar</span></button>
-                            <button class="btn-modal-blanco" id="cancelar-categoria"><i class="fas fa-times"></i><span>Cancelar</span></button>
-                        </div> 
-                    </div>
-                    
 
+                    <form/>
+                    
                 </div>
         </div>
     </div>
@@ -381,30 +349,34 @@
                     <span class="close">&times;</span>
                 </div>
                 <div class="modal-body-1">
-                    <div class="body-derecha">
-                        <div class="derecha-superior">
-                            <div class="campo-colum">
-                                <label for="cor-marca">Código de Marca:</label>
-                                <input type="text" id="cor-marca" placeholder="MA-02" disabled>
+                    <form id="form-marca">
+                        <div class="body-derecha">
+                            <div class="derecha-superior">
+                                <div class="campo-colum">
+                                    <label for="cod-marca">Código de Marca:</label>
+                                    <input type="text" id="cod-marca" disabled>
+                                </div>
+        
+                                <div class="campo-colum">
+                                    <label for="nombre-marca">Nombre:</label>
+                                    <input type="text" id="nombrr-marca" placeholder="Nombre de la Marca">
+                                </div>
+        
+                                <div class="campo-colum">
+                                    <label for="descripcion-marca">Descripcion:
+                                    </label>
+                                    <textarea id="descripcion-marca" placeholder="Descripción de la Marca"></textarea>
+                                </div>
                             </div>
-    
-                            <div class="campo-colum">
-                                <label for="nombrr-marca">Nombre:</label>
-                                <input type="text" id="nombrr-marca" placeholder="Nombre de la Marca">
-                            </div>
-    
-                            <div class="campo-colum">
-                                <label for="descripcion-marca">Descripcion:
-                                </label>
-                                <textarea id="descripcior-marca" placeholder="Descripción de la Marca"></textarea>
-                            </div>
+        
+                            <div class="botones">
+                                <button class="btn-modal-azul" id="guardar-marca"><i class="fas fa-save"></i><span>Guardar</span></button>
+                                <button class="btn-modal-blanco" id="cancelar-marca"><i class="fas fa-times"></i><span>Cancelar</span></button>
+                            </div> 
                         </div>
-    
-                        <div class="botones">
-                            <button class="btn-modal-azul" id="guardar-marca"><i class="fas fa-save"></i><span>Guardar</span></button>
-                            <button class="btn-modal-blanco" id="cancelar-marca"><i class="fas fa-times"></i><span>Cancelar</span></button>
-                        </div> 
-                    </div>
+
+                    </form>
+                    
                     
     
                 </div>
@@ -412,9 +384,6 @@
     </div>
 
 
-    <div data-component="footer" data-app="store-admin"></div>
-    <script src="../../js/sotore-admin.js"></script>
-    <script src="inventario.js"></script>
     <script src="categorias.js"></script>
 </body>
 </html>
