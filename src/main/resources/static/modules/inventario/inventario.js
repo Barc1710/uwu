@@ -6,8 +6,33 @@ const modalproductos = document.getElementById('modal-agregar-producto');
 const btnAgregarProducto = document.querySelector('#agregar-producto');
 const spanCloseproductos = document.querySelector('#modal-agregar-producto .close');
 
+// Función para cargar marcas y categorías en los selects
+function cargarMarcasYCategorias() {
+    // Cargar marcas
+    fetch('/api/marcas')
+        .then(res => res.json())
+        .then(marcas => {
+            const selectMarca = document.getElementById('marca-product');
+            selectMarca.innerHTML = '<option value="">Seleccionar Marca</option>';
+            marcas.forEach(marca => {
+                selectMarca.innerHTML += `<option value="${marca.id_marca}">${marca.nombre}</option>`;
+            });
+        });
+    // Cargar categorías
+    fetch('/api/categorias')
+        .then(res => res.json())
+        .then(categorias => {
+            const selectCategoria = document.getElementById('categoria-product');
+            selectCategoria.innerHTML = '<option value="">Seleccionar Categoría</option>';
+            categorias.forEach(cat => {
+                selectCategoria.innerHTML += `<option value="${cat.id_categoria}">${cat.nombre}</option>`;
+            });
+        });
+}
+
 // Abrir modal cuando se hace clic en "Agregar Producto"
 btnAgregarProducto.addEventListener('click', function() {
+    cargarMarcasYCategorias();
     modalproductos.style.display = 'block';
     document.body.style.overflow = 'hidden'; // Prevenir scroll del body
 });
@@ -43,13 +68,61 @@ document.addEventListener('DOMContentLoaded', function() {
     const btnGuardarProducto = document.getElementById('guardar-producto');
     const btnCancelarAgregar = document.getElementById('cancelar-agregar');
     
-    if (btnGuardarProducto) {
-        btnGuardarProducto.addEventListener('click', function() {
-            // Aquí puedes agregar la lógica para guardar el producto
-            console.log('Guardando producto...');
-            // Cerrar modal después de guardar
+    // Guardar producto
+    function guardarProducto() {
+        // Validaciones
+        const codigo_sku = document.getElementById('cod-product').value.trim();
+        const nombre = document.getElementById('nombre-product').value.trim();
+        const descripcion = document.getElementById('descripcion-product').value.trim();
+        const precioVenta = parseFloat(document.getElementById('precio-product').value);
+        const costoCompra = parseFloat(document.getElementById('costo-product').value);
+        const stock = parseInt(document.getElementById('stock-product').value);
+        const marcaId = parseInt(document.getElementById('marca-product').value);
+        const categoriaId = parseInt(document.getElementById('categoria-product').value);
+        const estado = document.getElementById('estado-product').value;
+
+        if (!nombre || isNaN(precioVenta) || isNaN(stock) || isNaN(marcaId) || isNaN(categoriaId) || !estado) {
+            alert('Por favor, completa todos los campos obligatorios.');
+            return;
+        }
+
+        const producto = {
+            codigo_sku,
+            nombre,
+            descripcion,
+            precioVenta,
+            costoCompra: isNaN(costoCompra) ? 0 : costoCompra,
+            stock,
+            stockMinimo: 0, // Puedes agregar un input si lo necesitas
+            imagenUrl: '', // Puedes implementar subida de imagen después
+            activo: estado !== 'descontinuado',
+            marca: { id_marca: marcaId },
+            categoria: { id_categoria: categoriaId }
+        };
+        fetch('/api/productos', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(producto)
+        })
+        .then(res => {
+            if (res.ok) return res.json();
+            return res.text().then(text => { throw new Error(text || 'Error al guardar el producto'); });
+        })
+        .then(data => {
+            alert('Producto guardado correctamente');
             modalproductos.style.display = 'none';
             document.body.style.overflow = 'auto';
+            listarProductos();
+        })
+        .catch(err => {
+            alert('Error: ' + err.message);
+        });
+    }
+
+    if (btnGuardarProducto) {
+        btnGuardarProducto.addEventListener('click', function(e) {
+            e.preventDefault();
+            guardarProducto();
         });
     }
     
@@ -82,6 +155,51 @@ function eliminarProducto(id) {
         // Lógica de eliminación
     }
 }
+
+// =============================
+// Listar productos en la tabla
+// =============================
+function listarProductos() {
+    fetch('/api/productos')
+        .then(res => res.json())
+        .then(productos => {
+            const tbody = document.getElementById('product-list');
+            tbody.innerHTML = '';
+            if (productos.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="9">No hay productos registrados.</td></tr>';
+                return;
+            }
+            productos.forEach((prod, idx) => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${idx + 1}</td>
+                        <td>${prod.codigo_sku || ''}</td>
+                        <td>${prod.nombre}</td>
+                        <td>${prod.marca ? prod.marca.nombre : ''}</td>
+                        <td>${prod.categoria ? prod.categoria.nombre : ''}</td>
+                        <td>$${prod.precioVenta != null ? prod.precioVenta.toFixed(2) : ''}</td>
+                        <td>${prod.stock != null ? prod.stock : ''}</td>
+                        <td><span class="${prod.activo ? 'estado-disponible' : 'estado-agotado'}">${prod.activo ? 'Disponible' : 'Agotado'}</span></td>
+                        <td class="acciones">
+                            <button class="btn-accion btn-ver" onclick="verProducto(${prod.id_producto})">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="btn-accion btn-editar" onclick="editarProducto(${prod.id_producto})">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn-accion btn-eliminar" onclick="eliminarProducto(${prod.id_producto})">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+        });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    listarProductos();
+});
 
 // ========================================
 //    Modal agregar imagen

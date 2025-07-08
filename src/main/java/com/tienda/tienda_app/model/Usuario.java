@@ -19,7 +19,7 @@ public class Usuario {
     private String username;
     @Column(unique = true)
     private String email;
-    private String password_hash; // En una app real, esto se manejaría con Spring Security
+    private String passwordHash; // En una app real, esto se manejaría con Spring Security
     private Boolean activo = true;
 
     @ManyToOne

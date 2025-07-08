@@ -73,164 +73,123 @@ document.addEventListener('keydown', function(event) {
 
 // Fichero: modules/inventario/categorias.js
 
-document.addEventListener('DOMContentLoaded', () => {
-
-    const API_URL = 'http://localhost:8080/api/v1/categorias';
-
-    // Elementos del DOM
-    const tablaCategorias = document.getElementById('tabla-categorias');
-    const btnNuevaCategoria = document.getElementById('btn-nueva-categoria');
-    const modal = document.getElementById('modal-categoria');
-    const modalTitulo = document.getElementById('modal-titulo');
-    const formCategoria = document.getElementById('form-categoria');
-    const inputId = document.getElementById('categoria-id');
-    const inputNombre = document.getElementById('nombre');
-    const inputDescripcion = document.getElementById('descripcion');
-    const closeButton = document.querySelector('.close-button');
-
-    let esModoEdicion = false;
-
-    // --- FUNCIONES ---
-
-    // Función para obtener y mostrar todas las categorías
-    const cargarCategorias = async () => {
-        try {
-            const response = await fetch(API_URL);
-            if (!response.ok) throw new Error('No se pudo obtener las categorías.');
-            
-            const categorias = await response.json();
-            tablaCategorias.innerHTML = ''; // Limpiar la tabla antes de cargar
-
+// =============================
+// Listar categorías en la tabla
+// =============================
+function listarCategorias() {
+    fetch('/api/categorias')
+        .then(res => res.json())
+        .then(categorias => {
+            const tbody = document.getElementById('categoria-list');
+            tbody.innerHTML = '';
             if (categorias.length === 0) {
-                tablaCategorias.innerHTML = '<tr><td colspan="4">No hay categorías registradas.</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="6">No hay categorías registradas.</td></tr>';
                 return;
             }
-
             categorias.forEach(cat => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td>${cat.idCategoria}</td>
-                    <td>${cat.nombre}</td>
-                    <td>${cat.descripcion || 'N/A'}</td>
-                    <td>
-                        <button class="btn-edit" data-id="${cat.idCategoria}">Editar</button>
-                        <button class="btn-delete" data-id="${cat.idCategoria}">Eliminar</button>
-                    </td>
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${cat.id_categoria || ''}</td>
+                        <td>${cat.nombre}</td>
+                        <td>${cat.descripcion || ''}</td>
+                        <td>${cat.cantidadProductos || 0}</td>
+                        <td>${cat.fechaCreacion ? cat.fechaCreacion.split('T')[0] : ''}</td>
+                        <td class="acciones">
+                            <button class="btn-accion btn-editar" onclick="editarCategoria(${cat.id_categoria})"><i class="fas fa-edit"></i></button>
+                            <button class="btn-accion btn-eliminar" onclick="eliminarCategoria(${cat.id_categoria})"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
                 `;
-                tablaCategorias.appendChild(tr);
             });
-        } catch (error) {
-            console.error('Error al cargar categorías:', error);
-        }
-    };
-
-    // Función para manejar el guardado (Crear o Editar)
-    const guardarCategoria = async (event) => {
-        event.preventDefault();
-
-        const categoriaData = {
-            nombre: inputNombre.value,
-            descripcion: inputDescripcion.value
-        };
-
-        const id = inputId.value;
-        const url = esModoEdicion ? `${API_URL}/${id}` : API_URL;
-        const method = esModoEdicion ? 'PUT' : 'POST';
-
-        try {
-            const response = await fetch(url, {
-                method: method,
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(categoriaData)
-            });
-
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.message || 'Error al guardar la categoría.');
+        });
+}
+// =============================
+// Listar marcas en la tabla
+// =============================
+function listarMarcas() {
+    fetch('/api/marcas')
+        .then(res => res.json())
+        .then(marcas => {
+            const tbody = document.getElementById('marca-list');
+            tbody.innerHTML = '';
+            if (marcas.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5">No hay marcas registradas.</td></tr>';
+                return;
             }
-            
-            cerrarModal();
-            cargarCategorias(); // Recargar la tabla
+            marcas.forEach(marca => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${marca.id_marca || ''}</td>
+                        <td>${marca.nombre}</td>
+                        <td>${marca.cantidadProductos || 0}</td>
+                        <td>${marca.fechaCreacion ? marca.fechaCreacion.split('T')[0] : ''}</td>
+                        <td class="acciones">
+                            <button class="btn-accion btn-editar" onclick="editarMarca(${marca.id_marca})"><i class="fas fa-edit"></i></button>
+                            <button class="btn-accion btn-eliminar" onclick="eliminarMarca(${marca.id_marca})"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                `;
+            });
+        });
+}
 
-        } catch (error) {
-            console.error('Error al guardar:', error);
-            alert('Error al guardar: ' + error.message);
-        }
-    };
-
-    // Función para eliminar una categoría
-    const eliminarCategoria = async (id) => {
-        // Confirmación antes de eliminar
-        if (!confirm('¿Estás seguro de que quieres eliminar esta categoría?')) {
-            return;
-        }
-
-        try {
-            const response = await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
-
-            if (!response.ok) throw new Error('No se pudo eliminar la categoría.');
-            
-            cargarCategorias(); // Recargar la tabla
-
-        } catch (error) {
-            console.error('Error al eliminar:', error);
-        }
-    };
-
-
-    // --- MANEJO DEL MODAL ---
-    const abrirModalParaCrear = () => {
-        esModoEdicion = false;
-        modalTitulo.textContent = 'Nueva Categoría';
-        formCategoria.reset();
-        inputId.value = '';
-        modal.style.display = 'block';
-    };
-
-    const abrirModalParaEditar = async (id) => {
-        esModoEdicion = true;
-        modalTitulo.textContent = 'Editar Categoría';
-
-        try {
-            const response = await fetch(`${API_URL}/${id}`);
-            if (!response.ok) throw new Error('No se pudo obtener los datos de la categoría.');
-            
-            const cat = await response.json();
-            inputId.value = cat.idCategoria;
-            inputNombre.value = cat.nombre;
-            inputDescripcion.value = cat.descripcion;
-            modal.style.display = 'block';
-        } catch (error) {
-            console.error('Error al cargar datos para editar:', error);
-        }
-    };
-
-    const cerrarModal = () => {
-        modal.style.display = 'none';
-    };
-
-    // --- EVENT LISTENERS ---
-    btnNuevaCategoria.addEventListener('click', abrirModalParaCrear);
-    closeButton.addEventListener('click', cerrarModal);
-    formCategoria.addEventListener('submit', guardarCategoria);
-    
-    tablaCategorias.addEventListener('click', (event) => {
-        if (event.target.classList.contains('btn-edit')) {
-            const id = event.target.dataset.id;
-            abrirModalParaEditar(id);
-        }
-        if (event.target.classList.contains('btn-delete')) {
-            const id = event.target.dataset.id;
-            eliminarCategoria(id);
-        }
+// Guardar Categoría
+const btnGuardarCategoria = document.getElementById('guardar-categoria');
+if (btnGuardarCategoria) {
+    btnGuardarCategoria.addEventListener('click', function(e) {
+        e.preventDefault();
+        const nombre = document.getElementById('nombre-categoria').value;
+        const descripcion = document.getElementById('descripcion-categoria').value;
+        fetch('/api/categorias', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ nombre, descripcion })
+        })
+        .then(res => {
+            if (res.ok) return res.json();
+            throw new Error('Error al guardar la categoría');
+        })
+        .then(data => {
+            alert('Categoría guardada correctamente');
+            document.getElementById('modal-agregar-categoria').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            listarCategorias();
+        })
+        .catch(err => {
+            alert(err.message);
+        });
     });
-    
-    window.addEventListener('click', (event) => {
-        if (event.target === modal) {
-            cerrarModal();
-        }
-    });
+}
 
-    // Carga inicial de datos
-    cargarCategorias();
+// Guardar Marca
+const btnGuardarMarca = document.getElementById('guardar-marca');
+if (btnGuardarMarca) {
+    btnGuardarMarca.addEventListener('click', function(e) {
+        e.preventDefault();
+        const nombre = document.getElementById('nombrr-marca').value;
+        const descripcion = document.getElementById('descripcion-marca').value;
+        fetch('/api/marcas', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ nombre, descripcion })
+        })
+        .then(res => {
+            if (res.ok) return res.json();
+            throw new Error('Error al guardar la marca');
+        })
+        .then(data => {
+            alert('Marca guardada correctamente');
+            document.getElementById('modal-agregar-marca').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            listarMarcas();
+        })
+        .catch(err => {
+            alert(err.message);
+        });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    listarCategorias();
+    listarMarcas();
 });

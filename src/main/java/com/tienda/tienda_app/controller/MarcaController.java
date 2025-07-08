@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/marcas")
@@ -17,8 +18,8 @@ public class MarcaController {
     private MarcaRepository marcaRepository;
 
     @GetMapping
-    public List<Marca> getAllMarcas() {
-        return marcaRepository.findAll();
+    public List<MarcaDTO> getAllMarcas() {
+        return marcaRepository.findAll().stream().map(marca -> new MarcaDTO(marca)).collect(Collectors.toList());
     }
 
     @PostMapping
@@ -36,5 +37,23 @@ public class MarcaController {
                     Marca updatedMarca = marcaRepository.save(marca);
                     return ResponseEntity.ok(updatedMarca);
                 }).orElse(ResponseEntity.notFound().build());
+    }
+}
+
+// DTO interno
+class MarcaDTO {
+    public Integer id_marca;
+    public String nombre;
+    public String descripcion;
+    public Boolean activo;
+    public String fechaCreacion;
+    public int cantidadProductos;
+    public MarcaDTO(com.tienda.tienda_app.model.Marca marca) {
+        this.id_marca = marca.getId_marca();
+        this.nombre = marca.getNombre();
+        this.descripcion = marca.getDescripcion();
+        this.activo = marca.getActivo();
+        this.fechaCreacion = marca.getFechaCreacion() != null ? marca.getFechaCreacion().toString() : "";
+        this.cantidadProductos = (marca.getProductos() != null) ? marca.getProductos().size() : 0;
     }
 }

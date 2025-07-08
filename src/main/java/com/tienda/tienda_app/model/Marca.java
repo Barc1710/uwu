@@ -1,7 +1,12 @@
 package com.tienda.tienda_app.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import org.hibernate.annotations.CreationTimestamp;
 
 @Data
 @Entity
@@ -17,4 +22,12 @@ public class Marca {
     private String descripcion;
 
     private Boolean activo = true;
+
+    @Column(name = "fecha_creacion", updatable = false)
+    @CreationTimestamp
+    private LocalDateTime fechaCreacion;
+
+    @OneToMany(mappedBy = "marca")
+    @JsonIgnore
+    private List<Producto> productos;
 }
