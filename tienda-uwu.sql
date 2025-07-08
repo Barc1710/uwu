@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-07-2025 a las 06:19:40
+-- Tiempo de generación: 08-07-2025 a las 17:00:10
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -65,7 +65,12 @@ INSERT INTO `categorias` (`id_categoria`, `nombre`, `descripcion`, `activo`, `fe
 (2, 'w', '1', 1, NULL, NULL),
 (3, '3', '3', 1, NULL, '2025-07-08 04:11:52.000000'),
 (4, 'q', 'q', 1, NULL, '2025-07-08 04:13:02.000000'),
-(5, '1', '1', 1, NULL, '2025-07-08 04:15:45.000000');
+(5, '1', '1', 1, NULL, '2025-07-08 04:15:45.000000'),
+(9, '12', '1', 1, NULL, '2025-07-08 04:32:38.000000'),
+(11, 'qq', 'q', 1, NULL, '2025-07-08 04:35:42.000000'),
+(12, 'qqw', 'q', 1, NULL, '2025-07-08 04:35:53.000000'),
+(14, 'qqwq', 'q', 1, NULL, '2025-07-08 04:36:02.000000'),
+(16, 'qwq', 'q', 1, NULL, '2025-07-08 04:39:39.000000');
 
 -- --------------------------------------------------------
 
@@ -175,7 +180,9 @@ CREATE TABLE `marcas` (
 INSERT INTO `marcas` (`id_marca`, `nombre`, `descripcion`, `activo`, `fechacreacion`, `fecha_creacion`) VALUES
 (1, 'pesi2', 'marcopolo', 1, NULL, NULL),
 (2, '2', '2', 1, NULL, NULL),
-(3, '3', '3', 1, NULL, '2025-07-08 03:46:18.000000');
+(3, '3', '3', 1, NULL, '2025-07-08 03:46:18.000000'),
+(4, '1', '1', 1, NULL, '2025-07-08 04:32:30.000000'),
+(5, 'we', 'wer', 1, NULL, '2025-07-08 04:42:20.000000');
 
 -- --------------------------------------------------------
 
@@ -202,13 +209,46 @@ CREATE TABLE `movimientos_inventario` (
 
 CREATE TABLE `ofertas` (
   `id_oferta` int(11) NOT NULL,
-  `activo` bit(1) DEFAULT NULL,
-  `descripcion` varchar(255) DEFAULT NULL,
-  `fecha_fin` date DEFAULT NULL,
-  `fecha_inicio` date DEFAULT NULL,
-  `nombre` varchar(255) DEFAULT NULL,
-  `tipo_oferta` varchar(255) DEFAULT NULL,
-  `valor` double DEFAULT NULL
+  `nombre` varchar(100) NOT NULL,
+  `descripcion` text DEFAULT NULL,
+  `tipo_oferta` enum('PORCENTAJE','MONTO_FIJO') NOT NULL,
+  `valor` decimal(10,2) NOT NULL,
+  `fecha_inicio` datetime NOT NULL,
+  `fecha_fin` datetime NOT NULL,
+  `activo` tinyint(1) DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `oferta_categorias`
+--
+
+CREATE TABLE `oferta_categorias` (
+  `id_oferta` int(11) NOT NULL,
+  `id_categoria` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `oferta_marcas`
+--
+
+CREATE TABLE `oferta_marcas` (
+  `id_oferta` int(11) NOT NULL,
+  `id_marca` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `oferta_productos`
+--
+
+CREATE TABLE `oferta_productos` (
+  `id_oferta` int(11) NOT NULL,
+  `id_producto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -284,7 +324,11 @@ CREATE TABLE `productos` (
 INSERT INTO `productos` (`id_producto`, `codigo_sku`, `nombre`, `id_marca`, `id_categoria`, `descripcion`, `unidad_medida`, `precio_venta`, `costo_compra`, `stock`, `stock_minimo`, `imagen_url`, `activo`) VALUES
 (1, '231', 'pelota', 1, 1, 'peloton', NULL, 80, 90, 12, 0, '', 1),
 (3, '12', '12', 1, 1, '12', NULL, 12, 12, 21, 0, '', 1),
-(12, '121', '12', 1, 1, '12', NULL, 12, 12, 21, 0, '', 1);
+(12, '121', '12', 1, 1, '12', NULL, 12, 12, 21, 0, '', 1),
+(15, '21', '132', 1, 1, '123', NULL, 12, 123, 12, 0, '', 1),
+(19, 'coe23', 'pepe', 1, 1, 'e', NULL, 12, 14, 3, 0, '', 1),
+(20, 'coe231', 'pepe', 1, 1, 'e', NULL, 12, 14, 3, 0, '', 1),
+(21, '80', 'ubuntu', 1, 1, '.exe', NULL, 12, 15, 14, 0, '', 1);
 
 -- --------------------------------------------------------
 
@@ -486,6 +530,27 @@ ALTER TABLE `ofertas`
   ADD PRIMARY KEY (`id_oferta`);
 
 --
+-- Indices de la tabla `oferta_categorias`
+--
+ALTER TABLE `oferta_categorias`
+  ADD PRIMARY KEY (`id_oferta`,`id_categoria`),
+  ADD KEY `fk_oferta_cat_categoria` (`id_categoria`);
+
+--
+-- Indices de la tabla `oferta_marcas`
+--
+ALTER TABLE `oferta_marcas`
+  ADD PRIMARY KEY (`id_oferta`,`id_marca`),
+  ADD KEY `fk_oferta_marca_marca` (`id_marca`);
+
+--
+-- Indices de la tabla `oferta_productos`
+--
+ALTER TABLE `oferta_productos`
+  ADD PRIMARY KEY (`id_oferta`,`id_producto`),
+  ADD KEY `fk_oferta_prod_producto` (`id_producto`);
+
+--
 -- Indices de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
@@ -562,7 +627,7 @@ ALTER TABLE `cajas`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes`
@@ -598,7 +663,7 @@ ALTER TABLE `detalle_venta`
 -- AUTO_INCREMENT de la tabla `marcas`
 --
 ALTER TABLE `marcas`
-  MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `movimientos_inventario`
@@ -628,7 +693,7 @@ ALTER TABLE `permisos`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedores`
@@ -699,6 +764,27 @@ ALTER TABLE `detalle_venta`
 ALTER TABLE `movimientos_inventario`
   ADD CONSTRAINT `fk_movinv_prod` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`),
   ADD CONSTRAINT `fk_movinv_usuario` FOREIGN KEY (`id_usuario_responsable`) REFERENCES `usuarios` (`id_usuario`);
+
+--
+-- Filtros para la tabla `oferta_categorias`
+--
+ALTER TABLE `oferta_categorias`
+  ADD CONSTRAINT `fk_oferta_cat_categoria` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id_categoria`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_oferta_cat_oferta` FOREIGN KEY (`id_oferta`) REFERENCES `ofertas` (`id_oferta`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `oferta_marcas`
+--
+ALTER TABLE `oferta_marcas`
+  ADD CONSTRAINT `fk_oferta_marca_marca` FOREIGN KEY (`id_marca`) REFERENCES `marcas` (`id_marca`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_oferta_marca_oferta` FOREIGN KEY (`id_oferta`) REFERENCES `ofertas` (`id_oferta`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `oferta_productos`
+--
+ALTER TABLE `oferta_productos`
+  ADD CONSTRAINT `fk_oferta_prod_oferta` FOREIGN KEY (`id_oferta`) REFERENCES `ofertas` (`id_oferta`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_oferta_prod_producto` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `pedidos`

@@ -102,6 +102,69 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// =============================
+// Mostrar campos dinámicos según alcance en el modal de oferta
+// =============================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const alcanceOferta = document.getElementById('alcance-oferta');
+    const campoMarca = document.getElementById('campo-marca');
+    const campoCategoria = document.getElementById('campo-categoria');
+    const campoProducto = document.getElementById('campo-producto');
+
+    function cargarMarcas() {
+        fetch('/api/marcas')
+            .then(res => res.json())
+            .then(marcas => {
+                const select = document.getElementById('marcas');
+                select.innerHTML = '<option value="">Seleccionar Marca</option>';
+                marcas.forEach(marca => {
+                    select.innerHTML += `<option value="${marca.id_marca}">${marca.nombre}</option>`;
+                });
+            });
+    }
+    function cargarCategorias() {
+        fetch('/api/categorias')
+            .then(res => res.json())
+            .then(categorias => {
+                const select = document.getElementById('categorias');
+                select.innerHTML = '<option value="">Seleccionar Categoría</option>';
+                categorias.forEach(cat => {
+                    select.innerHTML += `<option value="${cat.id_categoria}">${cat.nombre}</option>`;
+                });
+            });
+    }
+    function cargarProductos() {
+        fetch('/api/productos')
+            .then(res => res.json())
+            .then(productos => {
+                const select = document.getElementById('productos');
+                select.innerHTML = '<option value="">Seleccionar Producto</option>';
+                productos.forEach(prod => {
+                    select.innerHTML += `<option value="${prod.id_producto}">${prod.nombre}</option>`;
+                });
+            });
+    }
+
+    if (alcanceOferta) {
+        alcanceOferta.addEventListener('change', function() {
+            campoMarca.style.display = 'none';
+            campoCategoria.style.display = 'none';
+            campoProducto.style.display = 'none';
+            if (this.value === 'marca') {
+                campoMarca.style.display = 'block';
+                cargarMarcas();
+            } else if (this.value === 'categoria') {
+                campoCategoria.style.display = 'block';
+                cargarCategorias();
+            } else if (this.value === 'producto') {
+                campoProducto.style.display = 'block';
+                cargarProductos();
+            }
+        });
+    }
+});
+
 //=========================================
 // Funciones para las acciones de la tabla
 //=========================================

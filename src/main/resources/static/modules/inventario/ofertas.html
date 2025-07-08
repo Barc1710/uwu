@@ -196,7 +196,7 @@
                 </div>
 
                 <div class="filtros">
-                    <select name="alcance" id="alcance-oferta">
+                    <select name="alcance" id="alcance">
                         <option value="">Alcance</option>
                         <option value="marca">Marca</option>
                         <option value="categoria">Categoría</option>
@@ -309,9 +309,17 @@
                                 <option value="todos">Todos los Productos</option>
                             </select>
                         </div>
-                        <div class="campo-colum">
-                            <label for="tipo-alcance">Marca</label>
-                            <input type="text" id="marca producto categoria">
+                        <div id="campo-marca" class="campo-colum" style="display:none;">
+                            <label for="marcas">Marca</label>
+                            <select name="marcas" id="marcas"></select>
+                        </div>
+                        <div id="campo-categoria" class="campo-colum" style="display:none;">
+                            <label for="categorias">Categoría</label>
+                            <select name="categorias" id="categorias"></select>
+                        </div>
+                        <div id="campo-producto" class="campo-colum" style="display:none;">
+                            <label for="productos">Producto</label>
+                            <select name="productos" id="productos"></select>
                         </div>
                     </div>
                     <div class="body-derecha">
