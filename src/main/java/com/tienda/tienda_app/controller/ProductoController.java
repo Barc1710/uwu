@@ -6,6 +6,13 @@ import com.tienda.tienda_app.repository.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.util.StringUtils;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import java.util.List;
 
@@ -28,9 +35,21 @@ public class ProductoController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping
-    public Producto createProducto(@RequestBody Producto producto) {
-        return productoRepository.save(producto);
+    @PostMapping("/upload")
+    public ResponseEntity<Producto> createProductoConImagen(
+            @RequestPart("producto") Producto producto,
+            @RequestPart(value = "imagen", required = false) MultipartFile imagen) throws IOException {
+        if (imagen != null && !imagen.isEmpty()) {
+            String nombreArchivo = System.currentTimeMillis() + "_" + StringUtils.cleanPath(imagen.getOriginalFilename());
+            String uploadDir = "src/main/resources/static/uploads/";
+            File dir = new File(uploadDir);
+            if (!dir.exists()) dir.mkdirs();
+            Path rutaArchivo = Paths.get(uploadDir + nombreArchivo);
+            Files.copy(imagen.getInputStream(), rutaArchivo);
+            producto.setImagenUrl("/uploads/" + nombreArchivo);
+        }
+        Producto guardado = productoRepository.save(producto);
+        return ResponseEntity.ok(guardado);
     }
 
     @PutMapping("/{id}")

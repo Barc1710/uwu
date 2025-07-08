@@ -80,6 +80,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const marcaId = parseInt(document.getElementById('marca-product').value);
         const categoriaId = parseInt(document.getElementById('categoria-product').value);
         const estado = document.getElementById('estado-product').value;
+        const imagenInput = document.getElementById('mainImage');
+        const imagenFile = imagenInput.files[0];
 
         if (!nombre || isNaN(precioVenta) || isNaN(stock) || isNaN(marcaId) || isNaN(categoriaId) || !estado) {
             alert('Por favor, completa todos los campos obligatorios.');
@@ -94,15 +96,21 @@ document.addEventListener('DOMContentLoaded', function() {
             costoCompra: isNaN(costoCompra) ? 0 : costoCompra,
             stock,
             stockMinimo: 0, // Puedes agregar un input si lo necesitas
-            imagenUrl: '', // Puedes implementar subida de imagen después
+            imagenUrl: '', // Se asignará en el backend
             activo: estado !== 'descontinuado',
             marca: { id_marca: marcaId },
             categoria: { id_categoria: categoriaId }
         };
-        fetch('/api/productos', {
+
+        const formData = new FormData();
+        formData.append('producto', new Blob([JSON.stringify(producto)], { type: 'application/json' }));
+        if (imagenFile) {
+            formData.append('imagen', imagenFile);
+        }
+
+        fetch('/api/productos/upload', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(producto)
+            body: formData
         })
         .then(res => {
             if (res.ok) return res.json();
@@ -112,11 +120,27 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Producto guardado correctamente');
             modalproductos.style.display = 'none';
             document.body.style.overflow = 'auto';
+            limpiarCamposProducto();
             listarProductos();
         })
         .catch(err => {
             alert('Error: ' + err.message);
         });
+    }
+
+    // Función para limpiar los campos del formulario de producto
+    function limpiarCamposProducto() {
+        document.getElementById('cod-product').value = '';
+        document.getElementById('nombre-product').value = '';
+        document.getElementById('descripcion-product').value = '';
+        document.getElementById('precio-product').value = '';
+        document.getElementById('costo-product').value = '';
+        document.getElementById('stock-product').value = '';
+        document.getElementById('marca-product').selectedIndex = 0;
+        document.getElementById('categoria-product').selectedIndex = 0;
+        document.getElementById('estado-product').selectedIndex = 0;
+        document.getElementById('mainImage').value = '';
+        // Si tienes un preview de imagen, también límpialo aquí
     }
 
     if (btnGuardarProducto) {
@@ -247,6 +271,30 @@ function previewImage(inputId) {
         };
         reader.readAsDataURL(input.files[0]);
     } else {
+        // Si se elimina la selección, restaurar icono y texto
+        uploadBox.querySelector('i').style.display = '';
+        uploadBox.querySelector('.text-img').style.display = '';
+        uploadBox.classList.remove('has-image');
+    }
+}
+
+// Asignar eventos a los inputs de imagen
+document.addEventListener('DOMContentLoaded', function() {
+    const mainImageInput = document.getElementById('mainImage');
+    const secondaryImageInput = document.getElementById('secondaryImage');
+
+    if (mainImageInput) {
+        mainImageInput.addEventListener('change', function() {
+            previewImage('mainImage');
+        });
+    }
+    if (secondaryImageInput) {
+        secondaryImageInput.addEventListener('change', function() {
+            previewImage('secondaryImage');
+        });
+    }
+});
+
         // Si se elimina la selección, restaurar icono y texto
         uploadBox.querySelector('i').style.display = '';
         uploadBox.querySelector('.text-img').style.display = '';
